@@ -1,0 +1,55 @@
+* {
+  cursor: none !important;
+  caret-color: auto !important;
+  transition: none !important;
+}
+
+.gif-cursor {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 999999 !important;
+  opacity: 1;
+  transform: translateZ(0);
+  will-change: left, top;
+  transition: none !important;
+  animation: none !important;
+}
+
+.gif-cursor.normal {
+  background: url(/images/cursor/normal.gif) no-repeat center center;
+  background-size: 100% 100%;
+  transform: translateZ(0) translate(-2px, -3px);
+}
+
+.gif-cursor.clickable {
+  background: url(/images/cursor/link.gif) no-repeat center center;
+  background-size: 100% 100%;
+  transform: translateZ(0) translate(-2px, -3px) !important;
+}
+
+.gif-cursor.text {
+  background: url(/images/cursor/text.gif) no-repeat center center;
+  background-size: 100% 100%;
+  transform: translateZ(0) translate(-4px, -10px) !important;
+}
+
+.gif-cursor.hidden {
+  opacity: 0;
+}
+
+input, textarea, [contenteditable] {
+  caret-color: auto !important;
+}
+
+@media (max-width: 768px) {
+  .gif-cursor {
+    display: none !important;
+  }
+  * {
+    cursor: auto !important;
+  }
+}

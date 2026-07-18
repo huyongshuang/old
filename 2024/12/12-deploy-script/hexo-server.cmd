@@ -1,0 +1,2 @@
+cd Blog
+hexo server

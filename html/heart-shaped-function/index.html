@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心形函数</title>
+    <link rel="icon" href="https://huyongshuang.github.io/images/avatar.png" sizes="any">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>心形函数图像</h1>
+        <div class="function-display">
+            y = (x²)^(1/3) + 0.9 · (3.3 - x²)^(1/2) · sin(nπx)
+        </div>
+    </div>
+    <div class="container">
+        <div class="canvas-container">
+            <canvas id="graphCanvas" width="860" height="400"></canvas>
+            <div class="value-display">
+                参数 n 值: <span id="nValue">0.0</span>
+            </div>
+        </div>
+        <div class="controls">
+            <div class="parameter-control">
+                <h3>参数 n 值控制</h3>
+                <div class="slider-container">
+                    <div class="slider-label">
+                        <span>n = 0</span>
+                        <span id="currentN">0.0</span>
+                        <span>n = 100</span>
+                    </div>
+                    <input type="range" id="nSlider" min="0" max="100" step="0.1" value="0">
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="startResetBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    开始
+                </button>
+                <button id="pauseContinueBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                    暂停
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>
