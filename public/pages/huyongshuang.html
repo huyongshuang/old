@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="胡永双">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set data attribute for CSS variables
+                root.setAttribute("data-theme", theme);
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes once DOM is ready
+            if (document.readyState !== "loading") {
+                document.body.classList.add(theme + "-mode");
+            } else {
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.body.classList.add(theme + "-mode");
+                    document.body.classList.remove((theme === DARK ? LIGHT : DARK) + "-mode");
+                });
+            }
+        })();
+    </script>
+    
+    <!-- Critical CSS to prevent flash -->
+    <style>
+        :root[data-theme="dark"] {
+            --background-color: #202124;
+            --background-color-transparent: rgba(32, 33, 36, 0.6);
+            --second-background-color: #2d2e32;
+            --third-background-color: #34353a;
+            --third-background-color-transparent: rgba(32, 33, 36, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #ffffff;
+            --second-text-color: #eeeeee;
+            --third-text-color: #bebec6;
+            --fourth-text-color: #999999;
+            --default-text-color: #bebec6;
+            --invert-text-color: #373D3F;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(255, 255, 255, 0.08);
+            --shadow-color-2: rgba(255, 255, 255, 0.05);
+        }
+        
+        :root[data-theme="light"] {
+            --background-color: #fff;
+            --background-color-transparent: rgba(255, 255, 255, 0.6);
+            --second-background-color: #f8f8f8;
+            --third-background-color: #f2f2f2;
+            --third-background-color-transparent: rgba(241, 241, 241, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #16171a;
+            --second-text-color: #2f3037;
+            --third-text-color: #5e5e5e;
+            --fourth-text-color: #eeeeee;
+            --default-text-color: #373D3F;
+            --invert-text-color: #bebec6;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(0, 0, 0, 0.08);
+            --shadow-color-2: rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+        
+        /* Apply body classes as soon as DOM is ready */
+        :root[data-theme="dark"] body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+    </style>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://huyongshuang.github.io/pages/huyongshuang.html"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="胡永双">
+<meta property="og:url" content="https://huyongshuang.github.io/pages/huyongshuang">
+<meta property="og:site_name" content="胡永双">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huyongshuang.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-02-05T14:31:16.349Z">
+<meta property="article:modified_time" content="2026-02-05T14:31:16.349Z">
+<meta property="article:author" content="huyongshuang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huyongshuang.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            胡永双 | 胡永双
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+        
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+        <link href="" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"huyongshuang.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"0px","image_alignment":"center","image_caption":false,"link_icon":false,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":true,"family":"Times New Roman","url":null}},"toc":{"enable":true,"max_depth":5,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"SimSun","url":null},"english":{"enable":true,"family":"Times New Roman","url":null},"title":{"enable":true,"family":"SimSun","url":null}},"content_max_width":"1200px","sidebar_width":"220px","hover":{"shadow":true,"scale":true},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.png","dark":"/images/dark.png"},"title":"胡永双的主页","subtitle":{"text":["他们应该多听，少说，对差异满怀激情，热爱那些不同于他们的想法。","我们所度过的每个平凡的日常，也许就是连续发生的奇迹。","世界上只有一种英雄主义，就是在认清生活的真相后依然热爱生活。","你站在桥上看风景，看风景的人在楼上看你。明月装饰了你的窗子，你装饰了别人的梦。","别让任何人消耗你内心的晴朗，生活应该是被热爱的人和事填满。","所有的惊艳，都来自长久的准备；所有的幸运，都源于不懈的努力。","其实人跟树是一样的，越是向往高处的阳光，它的根就越要伸向黑暗的地底。","死亡不是失去生命，而是走出了时间。","过去都是假的，回忆是一条没有归途的路，以往的一切春天都无法复原，即使最狂热最坚贞的爱情，归根结底也不过是一种瞬息即逝的现实，唯有孤独永恒。","所有的大人都曾经是小孩，虽然只有少数人记得。"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#373d3f","dark":"#d1d1b6"},"text_style":{"title_size":"4.0rem","subtitle_size":"1.8rem","line_height":1.5},"custom_font":{"enable":true,"family":"SimSun","url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/huyongshuang","instagram":null,"zhihu":"https://www.zhihu.com/people/huyongshuang","twitter":null,"email":"746059847@qq.com","/images/bilibili.png":"https://space.bilibili.com/400547411","fa-solid fa-circle-user":"https://huyongshuang.mysxl.cn"},"qrs":{"weixin":"/images/weixin.png","qq":"/images/qq.png"}}},"plugins":{"feed":{"enable":true,"type":"atom","path":"atom.xml","limit":0,"hub":null,"content":true,"content_limit":140,"content_limit_delim":" ","order_by":"-date","icon":"/images/favicon.ico","autodiscovery":true,"template":null},"aplayer":{"enable":true,"type":"fixed","audios":[{"name":"像我这样的人","artist":"毛不易","url":"https://music.huyongshuang.top/毛不易 - 像我这样的人.mp3","cover":"/music/cover/平凡的一天.jpg","lrc":"/music/lrc/毛不易 - 像我这样的人.lrc"},{"name":"一个人想着一个人","artist":"Lone","url":"https://music.huyongshuang.top/Lone - 一个人想着一个人.mp3","cover":"/music/cover/Lone.jpg","lrc":"/music/lrc/Lone - 一个人想着一个人.lrc"},{"name":"济宁好孩子","artist":"张卫","url":"https://music.huyongshuang.top/张卫 - 济宁好孩子.mp3","cover":"/music/cover/张卫作品集.jpg","lrc":"/music/lrc/张卫 - 济宁好孩子.lrc"},{"name":"平凡的一天","artist":"毛不易","url":"https://music.huyongshuang.top/毛不易 - 平凡的一天.mp3","cover":"/music/cover/平凡的一天.jpg","lrc":"/music/lrc/毛不易 - 平凡的一天.lrc"},{"name":"一荤一素","artist":"毛不易","url":"https://music.huyongshuang.top/毛不易 - 一荤一素.mp3","cover":"/music/cover/平凡的一天.jpg","lrc":"/music/lrc/毛不易 - 一荤一素.lrc"},{"name":"一程山路","artist":"毛不易","url":"https://music.huyongshuang.top/毛不易 - 一程山路.mp3","cover":"/music/cover/小王.jpg","lrc":"/music/lrc/毛不易 - 一程山路.lrc"},{"name":"东北民谣","artist":"毛不易","url":"https://music.huyongshuang.top/毛不易 - 东北民谣.mp3","cover":"/music/cover/小王.jpg","lrc":"/music/lrc/毛不易 - 东北民谣.lrc"},{"name":"无名的人","artist":"毛不易","url":"https://music.huyongshuang.top/毛不易 - 无名的人.mp3","cover":"/music/cover/无名的人.jpg","lrc":"/music/lrc/毛不易 - 无名的人.lrc"},{"name":"看得最远的地方","artist":"毛不易","url":"https://music.huyongshuang.top/毛不易 - 看得最远的地方.mp3","cover":"/music/cover/月光、背影与海.jpg","lrc":"/music/lrc/毛不易 - 看得最远的地方.lrc"},{"name":"梦与创造","artist":"胡永双","url":"https://music.huyongshuang.top/胡永双 - 梦与创造.mp3","cover":"/music/cover/根新.jpg","lrc":"/music/lrc/胡永双 - 梦与创造.lrc"}]},"mermaid":{"enable":true,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1200px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"icon":"fa-regular fa-archive","submenus":{"帖子归档":"/archives","分类归档":"/categories","标签归档":"/tags"}},"视频":{"icon":"fa-regular fa-video","submenus":{"抖音":"https://v.douyin.com/USq91Jn","快手":"https://www.kuaishou.com/profile/3xgkz6dvtip3dsi","B站":"https://space.bilibili.com/400547411","腾讯视频":"https://v.qq.com/s/videoplus/9000237633/2?ref=mp","爱奇艺":"https://www.iqiyi.com/creator/1569044152","优酷":"https://www.youku.com/profile/index/?uid=UNjM1OTIyMDI0MA==","西瓜视频":"https://www.ixigua.com/home/1596089100415331","搜狐视频":"https://tv.sohu.com/user/334351365","好看视频":"https://haokan.baidu.com/author/1639304967228015","YouTube":"https://www.youtube.com/@huyongshuang"}},"链接":{"icon":"fa-regular fa-link","path":"/bookmarks"},"资源":{"icon":"fa-regular fa-download","path":"/resource"},"HTML":{"icon":"fa-solid fa-code","path":"/html"},"音乐馆":{"icon":"fa-light fa-music","path":"/music"},"关于":{"icon":"fa-regular fa-user","submenus":{"胡永双":"/huyongshuang","关于博客":"/pages/about-blog.html"}},"留言":{"icon":"fa-regular fa-comments","path":"/message"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"创造，为了更好的生存。","show_on_mobile":true,"links":{"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2020/10/1 13:14:52"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+        
+<link rel="stylesheet" href="/fontawesome/thin.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/fontawesome/light.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/fontawesome/duotone.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/fontawesome/sharp-solid.min.css">
+
+    
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="胡永双" type="application/atom+xml">
+</head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+	<span class="scroll-progress-bar"></span>
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/logo.jpg" class="w-full h-full rounded-xs">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                胡永双
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/archives">
+                                                    帖子归档
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/categories">
+                                                    分类归档
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/tags">
+                                                    标签归档
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-video fa-fw"></i>
+                                    视频
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://v.douyin.com/USq91Jn">
+                                                    抖音
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.kuaishou.com/profile/3xgkz6dvtip3dsi">
+                                                    快手
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://space.bilibili.com/400547411">
+                                                    B站
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://v.qq.com/s/videoplus/9000237633/2?ref=mp">
+                                                    腾讯视频
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.iqiyi.com/creator/1569044152">
+                                                    爱奇艺
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.youku.com/profile/index/?uid=UNjM1OTIyMDI0MA==">
+                                                    优酷
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.ixigua.com/home/1596089100415331">
+                                                    西瓜视频
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://tv.sohu.com/user/334351365">
+                                                    搜狐视频
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://haokan.baidu.com/author/1639304967228015">
+                                                    好看视频
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://www.youtube.com/@huyongshuang">
+                                                    YOUTUBE
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/bookmarks"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    链接
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/resource"
+                                        >
+                                    <i class="fa-regular fa-download fa-fw"></i>
+                                    资源
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/html"
+                                        >
+                                    <i class="fa-solid fa-code fa-fw"></i>
+                                    HTML
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/music"
+                                        >
+                                    <i class="fa-light fa-music fa-fw"></i>
+                                    音乐馆
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/huyongshuang">
+                                                    胡永双
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/pages/about-blog">
+                                                    关于博客
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/message"
+                                        >
+                                    <i class="fa-regular fa-comments fa-fw"></i>
+                                    留言
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-Archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-Archives">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/archives">帖子归档</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/categories">分类归档</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/tags">标签归档</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-视频"
+                        >
+                            <span>
+                                视频
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-视频">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://v.douyin.com/USq91Jn">抖音</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.kuaishou.com/profile/3xgkz6dvtip3dsi">快手</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://space.bilibili.com/400547411">B站</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://v.qq.com/s/videoplus/9000237633/2?ref=mp">腾讯视频</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.iqiyi.com/creator/1569044152">爱奇艺</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.youku.com/profile/index/?uid=UNjM1OTIyMDI0MA==">优酷</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.ixigua.com/home/1596089100415331">西瓜视频</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://tv.sohu.com/user/334351365">搜狐视频</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://haokan.baidu.com/author/1639304967228015">好看视频</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://www.youtube.com/@huyongshuang">YOUTUBE</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/bookmarks"
+                        >
+                            <span>
+                                链接
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/resource"
+                        >
+                            <span>
+                                资源
+                            </span>
+                            
+                                <i class="fa-regular fa-download fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/html"
+                        >
+                            <span>
+                                HTML
+                            </span>
+                            
+                                <i class="fa-solid fa-code fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/music"
+                        >
+                            <span>
+                                音乐馆
+                            </span>
+                            
+                                <i class="fa-light fa-music fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-关于"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-关于">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/huyongshuang">胡永双</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/pages/about-blog">关于博客</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/message"
+                        >
+                            <span>
+                                留言
+                            </span>
+                            
+                                <i class="fa-regular fa-comments fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>归档</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>分类</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">12</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="page-template-container">
+	
+
+	
+
+	<div class="page-template-content markdown-body">
+		
+		<h1>胡永双</h1>
+		
+
+		<div style="
+  width: calc(100% + 54px);
+  margin: -120px -27px 0 -27px;
+  background: url('/images/light.png') no-repeat center center;
+  background-size: 100% auto;
+  border-radius: 17px 17px 0 0;
+  position: relative;
+  height: auto;
+  padding-top: 40%;
+">
+  <img 
+    
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/avatar.png"
+                     
+    alt="胡永双"
+    style="
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      position: absolute;
+      bottom: -75px;
+      left: 50%;
+      transform: translateX(-50%);
+  "
+                >
+</div>
+<div style="height: 70px;"></div>
+<div style="text-align: center; font-size: 40px; font-weight: bold;">胡永双</div>
+<div style="height: 10px;"></div>
+<div style="text-align: center; font-size: 20px; font-weight: normal;">创造，为了更好的生存。</div>
+
+<head>
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    .navbar {
+      background-color: var(--body-bg);
+      text-align: center;
+      padding: 5px 5px;
+      margin: 20px -27px;
+      border-radius: 7px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+    }
+    .navbar a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 20px;
+      vertical-align: middle;
+    }
+    .navbar a:hover {
+      color: var(--link-hover-color);
+      text-decoration: underline;
+    }
+    section {
+      scroll-margin-top: 30px;
+      padding: 27px;
+      margin: 20px -27px;
+      border-radius: 17px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+    }
+    #contact { background-color: var(--body-bg); }
+    #video { background-color: var(--body-bg); }
+    #message-platform { background-color: var(--body-bg); }
+    #music { background-color: var(--body-bg); }
+    #more { background-color: var(--body-bg); }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 24px;
+      background-color: #333;
+      margin-left: 4px;
+      animation: blink 0.7s infinite alternate;
+      transform: translateY(5px);
+    }
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <a href="#contact">联系方式</a>
+    <a href="#video">视频主页</a>
+    <a href="#message-platform">内容平台</a>
+    <a href="#music">音乐</a>
+    <a href="#about-life">成长箴言</a>
+    <a href="#more">更多</a>
+    <a href="https://github.com/huyongshuang" target="_blank" title="GitHub"><i class="fa-brands fa-github" style="font-size: 25px; vertical-align: middle; transform: translateY(-2px);"></i></a>
+    <a href="https://www.zhihu.com/people/huyongshuang" target="_blank" title="知乎"><i class="fa-brands fa-zhihu" style="font-size: 30px; vertical-align: middle; transform: translateY(-2px);"></i></a>
+    <a href="https://afdian.com/a/huyongshuang" target="_blank" title="爱发电" style="display: inline-block; vertical-align: middle;"><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://static.afdiancdn.com/static/img/logo/logo.png"
+                      alt="爱发电" style="height: 27px; vertical-align: middle; pointer-events: none; transform: translateY(1px);"
+                ></a>
+    <a href="https://steamcommunity.com/id/huyongshuang" target="_blank" title="Steam"><i class="fa-brands fa-steam" style="font-size: 25px; vertical-align: middle; transform: translateY(-2px);"></i></a>
+  </nav>
+
+  <section id="contact">
+    <h3 style="display: inline-block; margin: 0;"><span style="margin-right: 15px;"><i class="fa-regular fa-address-book"></i></span>联系方式</h3>
+    <div style="height: 10px;"></div>
+    <div style="text-align: center; transform: translateX(0px); font-size: 20px; line-height: 2;">
+      <div style="display: inline-block; text-align: left;">
+        <span style="vertical-align: middle;"><i class="fa-brands fa-qq" style="margin-right: 15px;"></i>Q&nbsp;Q<span style="margin-left: 4px;">：</span></span><a class="link"   href="https://qm.qq.com/cgi-bin/qm/qr?k=Sy_bOFg568UhQmvh1H8OkgI2bydtcaGI&noverify=0&personal_qrcode_source=4"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">746059847</a><br>
+        <span style="vertical-align: middle;"><i class="fa-brands fa-weixin" style="margin-right: 8px;"></i>微信：</span><a href="/images/weixin.png" target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">HYS-10-01</a><br>
+        <span style="vertical-align: middle;"><i class="fa-solid fa-envelope" style="margin-right: 11px;"></i>邮箱：</span><a class="link"   href="mailto:746059847@qq.com"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">746059847@qq.com</a><br>
+        <span style="vertical-align: middle;"><i class="fa-brands fa-weibo" style="margin-right: 11px;"></i>微博：</span><a class="link"   href="https://weibo.com/huyongshuang1001"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://weibo.com/huyongshuang1001</a><br>
+        <span style="vertical-align: middle;"><i class="fa-brands fa-blogger" style="margin-right: 14px;"></i>Blog：</span><a class="link"   href="https://blog.huyongshuang.top"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://blog.huyongshuang.top</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="video">
+    <h3 style="display: inline-block; margin: 0;"><span style="margin-right: 15px;"><i class="fa-regular fa-video"></i></span>视频主页</h3>
+    <div style="height: 10px;"></div>
+    <div style="text-align: center; transform: translateX(0px); font-size: 20px; line-height: 1.8;">
+      <div style="display: inline-block; text-align: left;">
+        <span style="vertical-align: middle;">&nbsp;&nbsp;抖&nbsp;&nbsp;&nbsp;&nbsp;音&nbsp;&nbsp;：</span><a class="link"   href="https://v.douyin.com/USq91Jn"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">HYS_1001</a><br>
+        <span style="vertical-align: middle;">&nbsp;&nbsp;快&nbsp;&nbsp;&nbsp;&nbsp;手&nbsp;&nbsp;：</span><a class="link"   href="https://www.kuaishou.com/profile/3xgkz6dvtip3dsi"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">HYS_1001</a><br>
+        <span style="vertical-align: middle;">&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;&nbsp;站&nbsp;&nbsp;：</span><a class="link"   href="https://space.bilibili.com/400547411"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://space.bilibili.com/400547411</a><br>
+        <span style="vertical-align: middle;">腾讯视频：</span><a class="link"   href="https://v.qq.com/s/videoplus/9000237633/2?ref=mp"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://v.qq.com/s/videoplus/9000237633/2</a><br>
+        <span style="vertical-align: middle;">爱&nbsp;&nbsp;奇&nbsp;&nbsp;艺：</span><a class="link"   href="https://www.iqiyi.com/creator/1569044152"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://www.iqiyi.com/creator/1569044152</a><br>
+        <span style="vertical-align: middle;">&nbsp;&nbsp;优&nbsp;&nbsp;&nbsp;&nbsp;酷&nbsp;&nbsp;：</span><a class="link"   href="https://www.youku.com/profile/index/?uid=UNjM1OTIyMDI0MA=="  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://www.youku.com/profile/index/?uid=UNjM1OTIyMDI0MA</a><br>
+        <span style="vertical-align: middle;">西瓜视频：</span><a class="link"   href="https://www.ixigua.com/home/1596089100415331"  target="_blank" style="color: #817979; text-decoration: none; vertical-align: middle;">https://www.ixigua.com/home/1596089100415331</a><br>
+        <span style="vertical-align: middle;">搜狐视频：</span><a class="link"   href="https://tv.sohu.com/user/334351365"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://tv.sohu.com/user/334351365</a><br>
+        <span style="vertical-align: middle;">好看视频：</span><a class="link"   href="https://haokan.baidu.com/author/1639304967228015"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://haokan.baidu.com/author/1639304967228015</a><br>
+        <span style="vertical-align: middle;">YouTube&nbsp;：</span><a class="link"   href="https://www.youtube.com/@huyongshuang"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://www.youtube.com/@huyongshuang</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="message-platform">
+    <h3 style="display: inline-block; margin: 0;"><span style="margin-right: 15px;"><i class="fa-regular fa-calendar-lines-pen"></i></span>内容平台</h3>
+    <div style="height: 10px;"></div>
+    <div style="text-align: center; transform: translateX(0px); font-size: 20px; line-height: 1.8;">
+      <div style="display: inline-block; text-align: left;">
+        <span style="vertical-align: middle;">头条号：</span><a class="link"   href="https://www.toutiao.com/c/user/1596089100415331/"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://www.toutiao.com/c/user/1596089100415331/</a><br>
+        <span style="vertical-align: middle;">百家号：</span><a class="link"   href="https://baijiahao.baidu.com/u?app_id=1639304967228015"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://baijiahao.baidu.com/u?app_id=1639304967228015</a><br>
+        <span style="vertical-align: middle;">搜狐号：</span><a class="link"   href="https://mp.sohu.com/profile?xpt=MTAyNDc3MjU5Nzc0Njc4MjIwOEBzb2h1LmNvbQ"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://mp.sohu.com/profile?xpt=MTAyNDc3MjU5Nzc0Njc4MjIwOEBzb2h1LmNvbQ</a><br>
+        <span style="vertical-align: middle;">企鹅号：</span><a class="link"   href="https://media.om.qq.com/author?id=MP8Gjymfum9SbOt06jtPbBMw0"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://media.om.qq.com/author?id=MP8Gjymfum9SbOt06jtPbBMw0</a><br>
+        <span style="vertical-align: middle;">大鱼号：</span><a class="link"   href="http://a.mp.uc.cn/media.html?mid=6e54dc45fc21492d94e143d84d589aa5"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">http://a.mp.uc.cn/media.html?mid=6e54dc45fc21492d94e143d84d589aa5</a><br>
+        <span style="vertical-align: middle;">网易号：</span><a class="link"   href="https://www.163.com/dy/media/T1769350667916.html"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://www.163.com/dy/media/T1769350667916.html</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="music">
+    <h3 style="display: inline-block; margin: 0;"><span style="margin-right: 15px;"><i class="fa-jelly fa-regular fa-music"></i></span>音乐</h3>
+    <div style="height: 10px;"></div>
+    <div style="text-align: center; font-size: 20px; font-weight: bold;">音乐人</div>
+    <div style="text-align: center; transform: translateX(0px); font-size: 20px; line-height: 1.8;">
+      <div style="display: inline-block; text-align: left;">
+        <span style="vertical-align: middle;">酷狗音乐人：</span><a class="link"   href="https://www.kugou.com/singer/info/5AIP3K3E0BED27"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://www.kugou.com/singer/info/5AIP3K3E0BED27</a><br>
+        <span style="vertical-align: middle;">Q&nbsp;Q&nbsp;音乐人：</span><a class="link"   href="https://y.qq.com/n/ryqq/singer/000n0OxL2EFEJl"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://y.qq.com/n/ryqq/singer/000n0OxL2EFEJl</a><br>
+        <span style="vertical-align: middle;">网易音乐人：</span><a class="link"   href="https://music.163.com/#/artist?id=46547430"  target="_blank" style="color: #2d7ff9; text-decoration: none; vertical-align: middle;">https://music.163.com/#/artist?id=46547430</a>
+      </div>
+    </div>
+    <div style="height: 10px;"></div>
+    <div style="display: flex; justify-content: center; align-items: center;"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1815120094&auto=0&height=66"></iframe></div>
+    <div style="height: 20px;"></div>
+    <div style="text-align: center; font-size: 20px; font-weight: bold;">音乐馆</div>
+    <div style="width: calc(100% + 48px); margin: 10px -24px -24px -24px; border-radius: 17px; overflow: hidden;"><iframe src="/html/music-player/index.html" width="100%" height="1000px" frameborder="0" scrolling="no" style="border: none; max-width: none; margin: 0 auto; display: block;"></iframe></div>
+  </section>
+
+  <section id="about-life">
+    <h3 style="display: inline-block; margin: 0; vertical-align: middle;"><span style="margin-right: 15px;"><i class="fa-sharp fa-regular fa-children"></i></span>成长箴言</h3>
+    <button id="playBtn" style="width: 35px; height: 35px; border: none; border-radius: 50%; background-color: blue; color: white; font-size: 16px; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 12px rgba(232, 74, 67, 0.4); display: inline-block; vertical-align: middle; margin-left: 27px;">▶</button>
+    <div style="height: 20px;"></div>
+    <div style="text-align: center; font-size: 18px;">
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第一条</p>
+      如果成长是一道「多选题」，为什么他们要设计「标准答案」？
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第一条</p>
+      别再害怕那些证明题。因为在人生的试卷上，阅卷人就是你自己。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第二条</p>
+      到底要逃到哪里，才能逃开原生家庭的阴影？
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第二条</p>
+      从拥有一个小空间开始，我对自己的世界，终于有了一点点的掌控力。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第三条</p>
+      人倒霉的时候，真是喝凉水都塞牙。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第三条</p>
+      一代人有一代人的「问题」。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第四条</p>
+      我们最大的压力，并不来源于长辈、社会、或者时代，它最大的来源，是同龄人的成就。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第四条</p>
+      在人生的竞争中，我们需要战胜的其实只有一个人，那就是过去的自己。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第五条</p>
+      我是我自己，不是父母的复制品。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第五条</p>
+      原来父母无条件的相信，才是我走到今天的理由。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第六条</p>
+      我的朋友圈里，到底还有多少朋友？
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第六条</p>
+      被伤害，然后学会坚韧；伤害人，然后学会温柔。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第七条</p>
+      集体活动让一群人狂欢，让另一群人更深刻地明白，自己有多孤独。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第七条</p>
+      你没有必要强迫自己去交朋友，如果没有遇到志同道合的人，就先学会和自己相处。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第八条</p>
+      “你像个学生”，什么时候成了贬义词？
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第八条</p>
+      就算已经不是学生，我们也依然有做梦的权利。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第九条</p>
+      原来十几岁时射入生命的子弹，击中的不只是那时的心脏，还有往后的人生。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第九条</p>
+      十几岁时的我们最厉害的不是年轻，是不论目标有多渺茫，都能奋不顾身的全力奔跑。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十条</p>
+      我不是爱拼才会赢，是爱赢才会拼。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十条</p>
+      我们不妄自菲薄，也应该坦然接受别人的优秀。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十一条</p>
+      喜欢一个人的心情，是三分自我陶醉，七分自我折磨。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十一条</p>
+      那些青春里必须放下的感情，多年后回头看，或许会感叹错过即是放过吧。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十二条</p>
+      人与人之间的缘分，真是一道永恒难解的题。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十二条</p>
+      缘分的有趣之处也在于它的时差，发生的那一刻，它总是无人知晓。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十三条</p>
+      越长大越发现，在感情的世界里，大部分时间我们只不过是别人的配角。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十三条</p>
+      原来那些童年里不曾拥有的东西，会变成萤火虫，布满我们人生的来路。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十四条</p>
+      我的日子滴在时间的流里，没有声音，也没有影子。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十四条</p>
+      在逃去如飞的日子里，没有什么，是时间无法治愈的。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十五条</p>
+      长大后的我们，没有学会体面地面对崩溃，那些无法化解的情绪，统一被我们伪装成了潇洒。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十五条</p>
+      人真正喜欢的事物，是无法被隐藏的，一旦重新接近，就会立刻被再次吸引。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十六条</p>
+      人要有多成熟，才能直面自己的幼稚？
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十六条</p>
+      所谓成熟，就是我们终于不用，在失去了某样东西之后，才明白它有多珍贵。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十七条</p>
+      即使面对最好的朋友，我们也无法坦然展示最糟的自己。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十七条</p>
+      世界破破烂烂，还好有人缝缝补补，原来真正在乎的人，会温柔地拥抱你所有的不堪。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十八条</p>
+      长大就是不断地分别。是不是总有一天，我们都会变成不一样的人？
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十八条</p>
+      就算成长让我们变成了不同的人，真正的朋友之间也会有一种默契，能穿透时间和距离，紧紧相拥。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第十九条</p>
+      人在拥有了「理想」之后，才会意识到自己的「渺小」。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第十九条</p>
+      为自己的错误和选择负责任，才是真正的成人仪式。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第二十条</p>
+      长大后才发现，有些事，努力了，也不一定有结果。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第二十条</p>
+      原来十几岁的我们，早已拥有了全世界。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第二十一条</p>
+      我们的成长到底要多快，才能追上家人老去的速度。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第二十一条</p>
+      从被照顾到照顾别人，我们长大了，他们老了。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第二十二条</p>
+      那些嘴上说着为了我们好的人，却根本不在乎我们觉得什么好。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第二十二条</p>
+      如果有一天我也成为别人的家长，但愿我不会忘记做小孩的感受。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第二十三条</p>
+      别人的期待，可以压垮一个人的青春。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第二十三条</p>
+      不管十几岁的梦想有没有实现，至少我们都不要成为，曾经看不起的大人。
+      <p style="color: red; margin-bottom: 5px; margin-top: 15px; font-weight: 800;">成长烦恼第二十四条</p>
+      我们这一代人离世界更近，却离家人和朋友更远了。
+      <p style="color: blue; margin-bottom: 5px; margin-top: 10px; font-weight: 800;">成长箴言第二十四条</p>
+      成长珍贵，少年你更珍贵！
+    </div>
+  </section>
+
+  <section id="more">
+    <h3 style="display: inline-block; margin: 0;"><span style="margin-right: 15px;"><i class="fa-solid fa-infinity"></i></span>更多</h3>
+    <div style="height: 20px;"></div>
+    <div style="text-indent: 2em; text-align: justify; font-size: 18px; line-height: 1.8;">
+      <div class="container"><div id="hitokoto">加载中...</div></div>
+      <div style="height: 5px;"></div>
+      <div class="container" style="height: 20px;"><div id="hitokoto"><span id="text-content"></span><span class="cursor"></span></div></div>
+      <div style="height: 25px;"></div>
+      <p style="margin-bottom: 0.8em;">每个人看待世界是不一样的。既然一个世界可以演绎成这么多样 ，那么尝试一下很多个世界来让一个人看 ，这样似乎很有趣。</p>
+      <p style="margin-bottom: 0.8em;">教育意味着获得不同的视角，理解不同的人、经历和历史。接受教育，但不要让你的教育僵化成傲慢。教育应该是思想的拓展，同理心的深化，视野的开阔。教育不应该使你的偏见变得更顽固。如果人们受过教育，他们应该变得不那么确定，而不是更确定。他们应该多听，少说，对差异满怀激情，热爱那些不同于他们的想法。</p>
+      <p style="margin-bottom: 0.8em;">过去总是美好的，因为一个人从来都意识不到当时的情绪；它后来扩展开来，因此我们只对过去，而非现在，拥有完整的情绪。</p>
+      <p style="margin-bottom: 0.8em;">我所有的奋斗，我多年来的学习，一直为了让自己得到这样一种特权：见证和体验超越父亲所给予我的更多的真理，并用这些真理构建我自己的思想。</p>
+      <p style="margin-bottom: 0.8em;">无论你成为谁，无论你把自己变成了什么，那就是你本来的样子。它一直在你心中，不是在剑桥，而是在于你自己。你就是黄金。我们接受教育，走出去，看到了世界的辽阔。然后转过身反思自己，发现很多东西被推翻了，我们曾经无比坚信的事情，也慢慢变得不再重要。</p>
+      <p style="margin-bottom: 0.8em;">教育的本质从不是灌输既定的知识与答案，而是唤醒人对世界的好奇、对未知的探索欲，锤炼独立思考、自主探究、持续迭代的学习能力，这份能力会成为人生路上最坚实的底气，让人在时代的更迭与境遇的变化中，始终拥有自我更新、破局成长的力量，无论身处顺境还是逆境，都能以学为舟、以思为桨，在岁月里不断丰盈自我、奔赴山海。</p>
+      <p style="margin-bottom: 0.8em;">明天会发生什么，谁也不知道，就像掌心攥不住的细碎晚风，像夜空里忽明忽暗的未知星光，前路的每一幕画面始终蒙着一层朦胧的薄纱，没有既定的答案，也无预设的轨迹。我们猜不透下一秒会遇见温柔的惊喜，还是突来的风雨，说不清脚下的路会拐向坦途，还是途经曲折，那些未到的时光裹着神秘的模样，藏着无数种可能，却也正因这份未知，让前行的每一步都多了几分期待与勇气。</p>
+      <p style="margin-bottom: 0.8em;">过去都是假的，回忆是一条没有归途的路，以往的一切春天都无法复原，即使最狂热最坚贞的爱情，归根结底也不过是一种瞬息即逝的现实，唯有孤独永恒。</p>
+    </div>
+  </section>
+</body>
+
+<script>
+  const navLinks = document.querySelectorAll('#navbar a[href^="#"]');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').slice(1);
+      document.getElementById(targetId).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch(`https://v1.hitokoto.cn/?c=k&c=i&c=h&c=d&c=c&t=${Date.now()}`)
+      .then(response => {
+        if (!response.ok) throw new Error('接口响应异常');
+        return response.json();
+      })
+      .then(data => {
+        let hitokotoText = data.hitokoto;
+        if (data.from_who || data.from) {
+          hitokotoText += " —— ";
+          if (data.from_who) hitokotoText += data.from_who;
+          if (data.from) hitokotoText += "《" + data.from + "》";
+        }
+        document.getElementById('hitokoto').innerText = hitokotoText;
+      })
+      .catch(error => {
+        document.getElementById('hitokoto').innerText = '获取失败，请稍后再试！';
+        console.error('获取一言失败：', error);
+      });
+  });
+
+  // ********** 动画配置 **********
+  const TYPE_SPEED = 80;    // 打字速度(ms/字)，越小越快
+  const DELETE_SPEED = 50;  // 删除速度(ms/字)，越小越快
+  const TYPE_PAUSE = 2000;  // 打字完成后停顿时间(ms)
+  const DELETE_PAUSE = 500; // 删除完成后停顿时间(ms)
+  // ********** 全局变量 **********
+  const textContent = document.getElementById('text-content');
+  let currentSentence = ''; // 当前动画句子
+  let index = 0;            // 打字/删除索引
+  let isDeleting = false;   // 是否删除状态
+  let isFirst = true;       // 标记是否是第一句，核心防重复
+
+  async function getHitokoto() {
+    try {
+      const response = await fetch('https://v1.hitokoto.cn/?c=k&c=i&c=h&c=d&c=c&t=' + Date.now());
+      if (!response.ok) throw new Error('接口响应异常');
+      const data = await response.json();
+      let sentence = data.hitokoto;
+      if (data.from_who || data.from) {
+        sentence += " —— ";
+        if (data.from_who) sentence += data.from_who;
+        if (data.from) sentence += "《" + data.from + "》";
+      }
+      return sentence;
+    } catch (error) {
+      console.error('获取一言失败：', error);
+      return '获取语录失败，换一句试试吧～';
+    }
+  }
+
+  async function typeDeleteAnimation() {
+    if (index === 0 && !isDeleting) {
+      currentSentence = await getHitokoto();
+    }
+    if (isDeleting) {
+      textContent.textContent = currentSentence.substring(0, index - 1);
+      index--;
+      if (index === 0) {
+        isDeleting = false;
+        if (isFirst) isFirst = false;
+        setTimeout(typeDeleteAnimation, DELETE_PAUSE);
+        return;
+      }
+      setTimeout(typeDeleteAnimation, DELETE_SPEED);
+    } else {
+      textContent.textContent = currentSentence.substring(0, index + 1);
+      index++;
+      if (index === currentSentence.length) {
+        isDeleting = true;
+        setTimeout(typeDeleteAnimation, TYPE_PAUSE);
+        return;
+      }
+      setTimeout(typeDeleteAnimation, TYPE_SPEED);
+    }
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    typeDeleteAnimation();
+  });
+
+  const playBtn = document.getElementById('playBtn');
+  const audio = new Audio('https://music.163.com/song/media/outer/url?id=2672603652.mp3');
+  audio.loop = true;
+  let isPlaying = false;
+
+  playBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      audio.pause();
+      playBtn.innerText = '▶';
+      playBtn.style.backgroundColor = '#7d31e8';
+    } else {
+      audio.play().catch(err => {
+        console.log('播放失败:', err);
+        alert('播放失败，可能是浏览器音频策略限制，请再次点击尝试');
+      });
+      playBtn.innerText = '❚❚';
+      playBtn.style.backgroundColor = '#651de2';
+    }
+    isPlaying = !isPlaying;
+  });
+
+  audio.addEventListener('pause', () => {
+    if (!audio.ended) return;
+    playBtn.innerText = '▶';
+    playBtn.style.backgroundColor = '#7d31e8';
+    isPlaying = false;
+  });
+</script>
+	</div>
+
+	<div class="page-template-comments">
+		
+	</div>
+</div>
+
+<div class="paginator">
+	
+</div>
+  
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1"><div style="display: flex; justify-content: center; align-items: center; transform: translateX(20px);"><div style="max-width: 300px; width: 100%;"><iframe width="100%" scrolling="no" height="30" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?c=code&id=34&icon=1&site=14&lang=cn"></iframe></div></div></div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">胡永双</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 12 篇文章
+                    </span>
+                    
+                        <span>
+                            共 12.8k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.5</a></span>
+        </div>
+        
+            <div class="icp-info my-1"><a target="_blank" rel="nofollow" href="
+                
+                    https://blog.huyongshuang.top
+                
+                ">Hexo博客网站项目地址（GitHub）</a></div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+                
+
+                    
+                        <div style="display: flex; justify-content: center; align-items: center;"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" style="margin-right: 18px; text-decoration: none;">鄂ICP备2026000237号-2</a><a href="https://beian.mps.gov.cn/#/query/webSearch?code=42062402000234" target="_blank" style="margin-right: 5px; display: inline-flex; align-items: center; text-decoration: none;"><img src="/images/beian.png" style="width: 14px; margin-right: 5px;" alt="备案图标" style="vertical-align: middle; margin-right: 3px;"><span style="vertical-align: middle;">鄂公网安备42062402000234号</span></a></div>
+                    
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+		<li class="right-bottom-tools rss flex justify-center items-center">
+			<a class="flex justify-center items-center" href="/atom.xml" target="_blank">
+				<i class="fa-regular fa-rss"></i>
+			</a>
+		</li>
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/tools/runtime.js"></script>
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+        
+<script src="/js/build/libs/mermaid.min.js"></script>
+
+    
+    
+<script src="/js/build/plugins/mermaid.js"></script>
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+    
+<script src="/js/build/layouts/bookmarkNav.js" type="module"></script>
+
+
+	
+	<div id="aplayer"></div>
+
+<script src="/js/build/libs/APlayer.min.js"></script>
+
+
+<script src="/js/build/plugins/aplayer.js"></script>
+
+
+	
+</body>
+
+</html>

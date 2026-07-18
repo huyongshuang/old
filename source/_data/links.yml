@@ -1,0 +1,20 @@
+- links_category: 博客框架
+  has_thumbnail: true
+  list:
+      - name: Hexo
+        link: https://hexo.io/zh-cn
+        description: 一个快速、简洁且高效的博客框架。
+        avatar: /images/ico/hexo.png
+        thumbnail: /images/screenshot/1.png
+
+- links_category: 关于博客
+  has_thumbnail: false
+  list:
+      - name: Hexo主题
+        link: https://hexo.io/themes/
+        description: Hexo主题
+        avatar: /images/ico/pro.png
+      - name: Hexo插件
+        link: https://hexo.io/plugins/
+        description: Hexo插件
+        avatar: /images/ico/plugin.png

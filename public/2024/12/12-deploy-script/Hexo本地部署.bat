@@ -1,0 +1,1 @@
+wt -d "Blog" cmd /k "hexo clean & hexo generate & hexo server"

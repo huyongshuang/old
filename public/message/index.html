@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <link rel="icon" href="https://huyongshuang.github.io/images/favicon.ico" sizes="any">
+</head>
+<body>
+    <div style="width: calc(100% + 54px); margin: -120px -27px 0 -27px; background: url('/images/light.png') no-repeat center center; background-size: 100% auto; border-radius: 17px 17px 0 0; position: relative; height: auto; padding-top: 40%;">
+        <img src="/images/avatar.png" alt="留言板" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); position: absolute; bottom: -75px; left: 50%; transform: translateX(-50%);">
+    </div>
+    <div style="height: 100px;"></div>
+    <div style="text-align: center; font-family: SimSun; line-height: 1.5;">
+        页面即将跳转到：<span style="font-weight: 600;">留言板</span><span style="font-family: Times New Roman;">&nbsp;……</span><br>
+        若未跳转，请<a href="/pages/message" style="color: #2d7ff9; text-decoration: none;">点击此处</a>。
+    </div>
+    <div style="height: 50px;"></div>
+    <div class="container" style="text-align: center; font-family: SimSun; line-height: 1.5;"><div id="hitokoto">加载中...</div></div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch(`https://v1.hitokoto.cn/?c=k&c=i&c=h&c=d&c=c&t=${Date.now()}`)
+            .then(response => {
+                if (!response.ok) throw new Error('接口响应异常');
+                return response.json();
+            })
+            .then(data => {
+                let hitokotoText = data.hitokoto;
+                if (data.from_who || data.from) {
+                    hitokotoText += " —— ";
+                    if (data.from_who) hitokotoText += data.from_who;
+                    if (data.from) hitokotoText += "《" + data.from + "》";
+                }
+                document.getElementById('hitokoto').innerText = hitokotoText;
+            })
+            .catch(error => {
+                document.getElementById('hitokoto').innerText = '获取失败，请稍后再试！';
+                console.error('获取一言失败：', error);
+            });
+    });
+    window.location.href = "/pages/message";
+</script>

@@ -1,0 +1,95 @@
+- category: 友情链接
+  icon: fa-light fa-paper-plane
+  items:
+    - name: 友情链接
+      link: /links
+      description:
+      image: /images/ico/paper-plane.ico
+
+- category: 内容链接
+  icon: fa-regular fa-pen-to-square
+  items:
+    - name: 头条号
+      link: https://www.toutiao.com/c/user/1596089100415331/
+      description:
+      image: /images/ico/toutiao.ico
+    - name: 百家号
+      link: https://baijiahao.baidu.com/u?app_id=1639304967228015
+      description:
+      image: /images/ico/baijiahao.ico
+    - name: 搜狐号
+      link: https://mp.sohu.com/profile?xpt=MTAyNDc3MjU5Nzc0Njc4MjIwOEBzb2h1LmNvbQ
+      description:
+      image: /images/ico/sohu.ico
+    - name: 企鹅号
+      link: https://media.om.qq.com/author?id=MP8Gjymfum9SbOt06jtPbBMw0
+      description:
+      image: /images/ico/qiehao.ico
+    - name: 大鱼号
+      link: http://a.mp.uc.cn/media.html?mid=6e54dc45fc21492d94e143d84d589aa5
+      description:
+      image: /images/ico/dayu.ico
+    - name: 网易号
+      link: https://www.163.com/dy/media/T1769350667916.html
+      description:
+      image: /images/ico/163.ico
+
+- category: 视频自媒体平台
+  icon: fa-regular fa-photo-film-music
+  items:
+    - name: 抖音创作者中心
+      link: https://creator.douyin.com/
+      description:
+      image: /images/ico/douyin.ico
+    - name: 快手创作者服务平台
+      link: https://cp.kuaishou.com/
+      description:
+      image: /images/ico/kuaishou.ico
+    - name: bilibili创作中心
+      link: https://member.bilibili.com/
+      description:
+      image: /images/ico/bilibili.ico
+    - name: 腾讯视频创作平台
+      link: https://mp.v.qq.com/
+      description:
+      image: /images/ico/v.qq.ico
+    - name: 爱奇艺号
+      link: https://mp.iqiyi.com/
+      description:
+      image: /images/ico/iqiyi.ico
+    - name: 优酷号创作平台
+      link: https://mp.youku.com/v2/login
+      description:
+      image: /images/ico/youku.ico
+    - name: 搜狐视频创作中心
+      link: https://my.tv.sohu.com/user/video/upload
+      description:
+      image: /images/ico/tv.sohu.ico
+
+- category: 内容自媒体平台
+  icon: fa-regular fa-pen-to-square fa-fw
+  items:
+    - name: 头条号
+      link: https://mp.toutiao.com/
+      description: 今日头条旗下的内容推送平台。
+      image: /images/ico/toutiao.ico
+    - name: 百家号
+      link: https://baijiahao.baidu.com/
+      description: 百度旗下内容创作平台。
+      image: /images/ico/baijiahao.ico
+    - name: 搜狐号
+      link: https://mp.sohu.com/
+      description: 搜狐旗下内容入驻、发布和分发平台。
+      image: /images/ico/sohu.ico
+    - name: 腾讯内容开放平台（企鹅号）
+      link: https://om.qq.com/
+      description: 腾讯旗下内容创作平台。
+      image: /images/ico/qiehao.ico
+    - name: 大鱼号
+      link: https://mp.dayu.com/
+      description: 阿里大文娱旗下内容创作平台。
+      image: /images/ico/dayu.ico
+    - name: 网易号
+      link: https://mp.163.com/
+      description: 网易传媒旗下自媒体内容分发与品牌助推平台。
+      image: /images/ico/163.ico

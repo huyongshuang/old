@@ -1,0 +1,109 @@
+---
+title: 屏幕颜色拾取器
+excerpt: ''
+date: 2024-12-10 10:20:04
+updated: 2024-12-10 10:20:04
+tags:
+categories:
+thumbnail:
+cover:
+---
+* **一个可以提取屏幕任意位置的颜色的网页工具，使用时请缩小浏览器窗口，并将你需要提取颜色的界面放置在浏览器窗口的外侧。**
+<div style="
+    width: calc(100% + 40px);
+    margin: 10px -30px -30px -30px;
+    border-radius: 18px;
+    overflow: hidden;
+    ">
+<iframe 
+    src="/html/color-picker/index.html"
+    width="100%"
+    height="1380px"
+    frameborder="0"
+    scrolling="no"
+    style="border: none;
+           max-width: none;
+           margin: 0 auto;
+           display: block;
+           ">
+</iframe>
+</div>
+<div style="height: 50px;"></div>
+
+* **代码如下：**
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屏幕颜色拾取器</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://huyongshuang.github.io/html/color-picker/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-eye-dropper"></i> 屏幕颜色拾取器</h1>
+            <p class="subtitle">使用EyeDropper API提取屏幕任意位置的颜色，支持多种颜色格式转换。</p>
+        </header>
+        <div class="color-display">
+            <div class="color-preview" id="colorPreview"></div>
+            <div class="color-info">
+                <div class="current-hex">
+                    <span id="hexValue">#dee2e6</span>
+                    <div class="hex-actions">
+                        <button class="btn btn-small case-toggle" id="toggleCase">
+                            <i class="fas fa-exchange-alt"></i> 大小写
+                        </button>
+                        <button class="btn btn-small btn-success" id="copyHex">
+                            <i class="far fa-copy"></i> 复制HEX
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="pickColor">
+                    <i class="fas fa-eye-dropper"></i> 打开颜色拾取器
+                </button>
+                <p style="margin-top: 15px; color: #7f8c8d;">
+                    点击按钮后，鼠标会变成一个取色器，点击屏幕上任意位置即可获取颜色值。
+                </p>
+            </div>
+        </div>
+        <div class="color-formats">
+            <h2><i class="fas fa-palette"></i> 颜色格式</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>格式</th>
+                        <th>值</th>
+                        <th class="actions-cell">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="colorTable">
+                    <!-- 颜色格式行将通过JavaScript动态生成 -->
+                </tbody>
+            </table>
+        </div>
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> 使用说明</h3>
+            <p>1. 点击“打开颜色拾取器”按钮，鼠标将变为取色器；</p>
+            <p>2. 点击屏幕上任意位置获取该点的颜色值；</p>
+            <p>3. 点击HEX颜色旁边的“大小写”按钮，可以切换HEX代码的大小写格式；</p>
+            <p>4. 点击对应颜色格式的“复制”按钮，将颜色代码复制到剪贴板。</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>基于EyeDropper API的屏幕颜色拾取工具 | 支持HEX, RGB, HSL, HSV, CMYK等多种格式</p>
+    </div>
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">颜色已复制到剪贴板</span>
+    </div>
+    <script src="https://huyongshuang.github.io/html/color-picker/js/script.js"></script>
+</body>
+</html>
+```
+
+* **点击** <a href="{% asset_path 屏幕颜色拾取器.html %}" download="屏幕颜色拾取器.html">**下载**</a> **html文件。**

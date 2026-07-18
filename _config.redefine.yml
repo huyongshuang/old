@@ -1,0 +1,548 @@
+# THEME REDEFINE CONFIGURATION FILE V2
+# BY EVANNOTFOUND
+# GITHUB: https://github.com/EvanNotFound/hexo-theme-redefine
+# DOCUMENTATION: https://redefine-docs.ohevan.com
+# DEMO: https://redefine.ohevan.com
+# Translated by HuYongshuang
+
+# 基本信息
+# Docs: https://redefine-docs.ohevan.com/basic/info
+info:
+  # 网站标题
+  title: 胡永双
+  # 网站副标题
+  subtitle: 创造，为了更好的生存。
+  # 作者姓名
+  author: 胡永双
+  # 站点地址
+  url: https://huyongshuang.github.io
+
+# 默认图片
+# Docs: https://redefine-docs.ohevan.com/basic/defaults
+defaults:
+  # 站点图标
+  favicon: /images/favicon.ico
+  # 站点Logo
+  logo: /images/logo.jpg
+  # 站点头像
+  avatar: /images/avatar.png
+
+# 颜色配置
+# Docs: https://redefine-docs.ohevan.com/basic/colors
+colors:
+  # 主题色
+  primary: "#A31F34"
+  # 二级色
+  secondary:
+  # 默认主题模式初始值（将被“偏好颜色方案”选项覆盖）
+  default_mode: light # light, dark
+
+# 全局功能设置
+# Docs: https://redefine-docs.ohevan.com/basic/global
+global:
+  # 自定义全局字体
+  fonts:
+    # 中文字体
+    chinese: 
+      enable: true # 是否启用自定义中文字体
+      family: SimSun # 中文字体名称
+      url:  # 中文字体链接
+    # 英文字体
+    english: 
+      enable: true # 是否启用自定义英文字体
+      family: Times New Roman # 英文字体名称
+      url:  # 英文字体链接
+    # 自定义标题字体（导航栏、侧边栏）
+    title:
+      enable: true # 是否启用自定义标题字体
+      family: SimSun # 标题字体名称
+      url:  # 标题字体链接
+  # 文章最大宽度
+  content_max_width: 1200px
+  # 侧边栏宽度
+  sidebar_width: 220px
+  # 鼠标悬停效果
+  hover:
+    shadow: true # 阴影效果
+    scale: true # 缩放效果
+  # 滚动进度
+  scroll_progress:
+    bar: true # 顶部进度条
+    percentage: true # 工具栏百分比
+  # 网站统计
+  website_counter:
+    url: https://cn.vercount.one/js # 统计API地址
+    enable: true # 是否启用网站统计
+    site_pv: true # 是否显示网站总访问量
+    site_uv: true # 是否显示网站总访客数
+    post_pv: true # 是否显示文章总访问量
+  # 是否启用单页应用体验（使用 Swup）. 见：https://swup.js.org/. 类似Pjax
+  single_page: true
+  # 是否启用首页全屏加载动画
+  preloader:
+    enable: false
+    custom_message: # 自定义消息。若为空，则将显示网站标题。
+  # 侧边工具栏
+  side_tools:
+    # 是否启用设置按钮的齿轮旋转动画
+    gear_rotation: true
+    # 是否在页面加载时自动展开工具列表
+    auto_expand: false
+  # 是否启用打开图形
+  open_graph:
+    enable: true
+    image: /images/redefine-og.webp  # 默认og:image
+    description: Hexo Theme Redefine, Redefine Your Hexo Journey. # 描述
+  # 谷歌统计
+  google_analytics:
+    enable: false # 是否启用谷歌统计
+    id:  # 谷歌统计Measurement ID
+
+# Fontawesome设置
+# Docs: https://redefine-docs.ohevan.com/basic/fontawesome
+fontawesome: # Pro v6.2.1
+  # Thin version
+  thin: true
+  # Light version
+  light: true
+  # Duotone version
+  duotone: true
+  # Sharp Solid version
+  sharp_solid: true
+
+# 第一屏
+# Docs: https://redefine-docs.ohevan.com/home/home_banner
+home_banner:
+  # 是否启用第一屏
+  enable: true
+  # 背景图片样式
+  style: fixed # static或者fixed
+  # 背景图片
+  image: 
+    light: /images/light.png # 亮色模式
+    dark: /images/dark.png # 暗色模式
+  # 主标题
+  title: 胡永双的主页
+  # 副标题
+  subtitle:
+    text: [
+      "他们应该多听，少说，对差异满怀激情，热爱那些不同于他们的想法。",
+      "我们所度过的每个平凡的日常，也许就是连续发生的奇迹。",
+      "世界上只有一种英雄主义，就是在认清生活的真相后依然热爱生活。",
+      "你站在桥上看风景，看风景的人在楼上看你。明月装饰了你的窗子，你装饰了别人的梦。",
+      "别让任何人消耗你内心的晴朗，生活应该是被热爱的人和事填满。",
+      "所有的惊艳，都来自长久的准备；所有的幸运，都源于不懈的努力。",
+      "其实人跟树是一样的，越是向往高处的阳光，它的根就越要伸向黑暗的地底。",
+      "死亡不是失去生命，而是走出了时间。",
+      "过去都是假的，回忆是一条没有归途的路，以往的一切春天都无法复原，即使最狂热最坚贞的爱情，归根结底也不过是一种瞬息即逝的现实，唯有孤独永恒。",
+      "所有的大人都曾经是小孩，虽然只有少数人记得。"
+    ] # 文字内容
+    hitokoto:  # 一言配置
+      enable: false # 是否启用一言
+      show_author: false # 是否显示作者
+      api: https://v1.hitokoto.cn # API地址，可以添加类型. 见：https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
+    typing_speed: 100 # 打字速度 (ms)
+    backing_speed: 80 # 退格速度 (ms)
+    starting_delay: 500 # 开始延迟 (ms)
+    backing_delay: 1500 # 退格延迟 (ms)
+    loop: true # 是否循环
+    smart_backspace: true # 是否智能退格
+  # 标题和副标题的文字颜色
+  text_color: 
+    light: "#373d3f" # 亮色模式
+    dark: "#d1d1b6" # 暗色模式
+  # 文字样式
+  text_style: 
+    # 标题字体大小
+    title_size: 4.0rem
+    # 副标题字体大小
+    subtitle_size: 1.8rem
+    # 标题与副标题行高
+    line_height: 1.5
+  # 自定义字体
+  custom_font: 
+    # 是否启用自定义字体
+    enable: true
+    # 字体名称
+    family: SimSun
+    # 字体CSS文件链接
+    url:
+  # 社交链接
+  social_links:
+    # 是否启用
+    enable: true
+    # 社交链接类型
+    style: default # default, reverse, center
+    # 社交链接
+    links:
+      github: https://github.com/huyongshuang # 你的 GitHub 地址
+      instagram: # 你的 Instagram 地址
+      zhihu: https://www.zhihu.com/people/huyongshuang # 你的 ZhiHu 地址
+      twitter:  # 你的 twitter 地址
+      email: 746059847@qq.com # 你的邮箱
+      /images/bilibili.png: https://space.bilibili.com/400547411
+      fa-solid fa-circle-user: https://huyongshuang.mysxl.cn
+      # ...... # 你可以添加更多
+    # 二维码社交链接
+    qrs:
+      weixin: /images/weixin.png # 你的微信二维码图片链接地址
+      qq: /images/qq.png # 你可以添加更多
+
+# 导航栏
+# Docs: https://redefine-docs.ohevan.com/home/navbar
+navbar:
+  # 自动隐藏导航栏
+  auto_hide: false
+  # 导航栏背景颜色
+  color:
+    left: "#f78736" # 左侧
+    right: "#367df7"  # 右侧
+    transparency: 35 # 透明度 (10-99)
+  # 导航栏宽度（通常无需修改）
+  width:
+    home: 1200px # 主页
+    pages: 1200px # 其他页面
+  # 导航栏链接
+  links:
+    Home: # 一级菜单栏名称
+      path: / # 网址，可以为相对路径或者绝对路径
+      icon: fa-regular fa-house # Fontawesome图标名称（可选）
+    Archives:
+      icon: fa-regular fa-archive
+      submenus:
+        帖子归档: /archives
+        分类归档: /categories
+        标签归档: /tags
+    视频:
+      icon: fa-regular fa-video
+      submenus:
+        抖音: https://v.douyin.com/USq91Jn
+        快手: https://www.kuaishou.com/profile/3xgkz6dvtip3dsi
+        B站: https://space.bilibili.com/400547411
+        腾讯视频: https://v.qq.com/s/videoplus/9000237633/2?ref=mp
+        爱奇艺: https://www.iqiyi.com/creator/1569044152
+        优酷: https://www.youku.com/profile/index/?uid=UNjM1OTIyMDI0MA==
+        西瓜视频: https://www.ixigua.com/home/1596089100415331
+        搜狐视频: https://tv.sohu.com/user/334351365
+        好看视频: https://haokan.baidu.com/author/1639304967228015
+        YouTube: https://www.youtube.com/@huyongshuang
+    链接:
+      icon: fa-regular fa-link
+      path: /bookmarks
+    资源:
+      icon: fa-regular fa-download
+      path: /resource
+    HTML:
+      icon: fa-solid fa-code
+      path: /html
+    音乐馆:
+      icon: fa-light fa-music
+      path: /music
+    关于:
+      icon: fa-regular fa-user
+      submenus:
+        胡永双: /huyongshuang
+        关于博客: /pages/about-blog.html
+    留言:
+      icon: fa-regular fa-comments
+      path: /message
+
+    # ...... # 你可以添加更多
+  # 导航栏搜索（本地搜索）. 需要hexo-generator-searchdb (npm i hexo-generator-searchdb). 见：https://github.com/theme-next/hexo-generator-searchdb
+  search:
+    # 是否启用
+    enable: true
+    # 页面加载时预加载搜索数据
+    preload: true
+
+# 首页文章
+# Docs: https://redefine-docs.ohevan.com/home/home
+home:
+  # 侧边栏设置
+  sidebar:
+    enable: true # 是否启用侧边栏
+    position: left # 侧边栏位置. left, right
+    first_item: info # 侧边栏显示顺序，侧边栏的第一项. menu, info
+    announcement: 创造，为了更好的生存。 # 公告文本
+    show_on_mobile: true # 是否在移动工作表菜单上显示侧边栏导航
+    links:
+        归档: # 显示的名称
+          path: /archives # 路径
+          icon: fa-regular fa-archive # 图标，可以为空
+        分类: # 显示的名称
+          path: /categories # 路径
+          icon: fa-regular fa-folder # 图标，可以为空
+        标签: # 显示的名称
+          path: /tags # 路径
+          icon: fa-regular fa-tags # 图标，可以为空
+      # ...... # 你可以添加更多
+  # 文章日期格式
+  article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
+  # 文章摘要自定义长度
+  excerpt_length: 200 # 文章摘录的最大长度
+  # 文章类别可见性
+  categories:
+    enable: true  # 是否启用
+    limit: 3 # 要显示的最大类别数
+  # 文章标签可见性
+  tags:
+    enable: true  # 是否启用
+    limit: 3  # 要显示的最大标签数
+
+# 文章
+# Docs: https://redefine-docs.ohevan.com/posts/articles
+articles:
+  # 设置文章的样式
+  style:
+    font_size: 16px # 字体大小
+    line_height: 1.5 # 正文行高
+    image_border_radius: 0px # 图片圆角大小
+    image_alignment: center # 图片对齐. left, center
+    image_caption: false # 图片描述
+    link_icon: false # 是否在文章中的链接后面显示图标
+    delete_mask: false # 为删除线标签添加蒙版效果，默认隐藏内容，在悬停时显示
+    title_alignment: left # 标题对齐. left, center
+    headings_top_spacing: # 从h1到h6的标题的顶部间距
+      h1: 3.2rem
+      h2: 2.4rem
+      h3: 1.9rem
+      h4: 1.6rem
+      h5: 1.4rem
+      h6: 1.3rem
+  # 字数统计. 需要hexo-wordcount (npm install hexo-wordcount). 见：https://github.com/willin/hexo-wordcount
+  word_count:
+    enable: true # 是否启用
+    count: true # 是否显示字数
+    min2read: true # 是否显示阅读时间
+  # 作者标签
+  author_label: 
+    enable: true # 是否启用
+    auto: false # 是否自动添加作者标签, e.g. Lv1, Lv2, Lv3...
+    list: []
+  # 代码块设置
+  code_block:
+    copy: true # 是否启用代码块复制按钮
+    style: mac # 样式 mac | simple
+    highlight_theme: # highlightjs代码高亮的配色方案. 预览见：https://highlightjs.org/examples
+      light: github # 亮色模式主题，支持: github, atom-one-light, default
+      dark: vs2015 # 暗色模式主题，支持: github-dark, monokai-sublime, vs2015, night-owl, atom-one-dark, nord, tokyo-night-dark, a11y-dark, agate
+    font: # 自定义字体
+      enable: true # 是否启用
+      family: Times New Roman # 字体名称
+      url: # 到字体CSS样式文件的URL
+  # 目录设置
+  toc:
+    enable: true # 是否开启目录
+    max_depth: 5 # 最大深度
+    number: false # 是否自动开启目录编号
+    expand: true # 是否全部展开目录
+    init_open: true # 是否默认打开 TOC
+  # 是否开启版权信息
+  copyright:
+    enable: true # 是否启用
+    default: cc_by_nc_sa # 默认版权信息, 可以是 cc_by_nc_sa, cc_by_nd, cc_by_nc, cc_by_sa, cc_by, all_rights_reserved, public_domain
+  # 是否开启图片懒加载
+  lazyload: true
+  # Pangu.js (automatically add space between Chinese and English). 见：https://github.com/vinta/pangu.js
+  pangu_js: false
+  # 文章推荐. 需要nodejieba (npm install nodejieba). 移植自hexo-theme-volantis.
+  recommendation:
+    # 是否开启推荐文章
+    enable: false
+    # 推荐文章这个区块的标题
+    title: 推荐阅读
+    # 在电脑端要显示的最大文章数
+    limit: 3
+    # 在手机端要显示的最大文章数
+    mobile_limit: 2
+    # 图像占位符
+    placeholder: /images/wallhaven-wqery6-light.webp
+    # 排除目录
+    skip_dirs: []
+
+# 评论系统
+# Docs: https://redefine-docs.ohevan.com/posts/comment
+comment:
+  # 是否启用评论
+  enable: true
+  # 评论系统
+  system: waline # waline, gitalk, twikoo, giscus
+  # 系统配置
+  config:
+    # Waline评论系统. 见：https://waline.js.org/
+    waline:
+      serverUrl: comment.huyongshuang.top # Waline服务器URL. e.g. https://example.example.com
+      lang: zh-CN # Waline语言. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
+      emoji: [
+        "https://unpkg.com/@waline/emojis@1.4.0/qq",
+        "https://unpkg.com/@waline/emojis@1.4.0/weibo",
+        "https://unpkg.com/@waline/emojis@1.4.0/bilibili",
+        "https://unpkg.com/@waline/emojis@1.4.0/bmoji",
+        "https://unpkg.com/@waline/emojis@1.4.0/tw-emoji"
+      ] # Waline表情选项卡, see https://waline.js.org/guide/features/emoji.html
+      recaptchaV3Key: # Google reCAPTCHA v3网站密钥. See https://waline.js.org/reference/client/props.html#recaptchav3key
+      turnstileKey: # Cloudflare提供验证码服务的网站密钥. See https://waline.js.org/reference/client/props.html#turnstilekey
+      reaction: false # Waline表情互动功能. See https://waline.js.org/reference/client/props.html#reaction
+    # Gitalk评论系统. 见：https://github.com/gitalk/gitalk
+    gitalk:
+      clientID: # GitHub Application Client ID
+      clientSecret: # GitHub Application Client Secret
+      repo: # GitHub仓库名
+      owner: # GitHub用户名
+      proxy: # GitHub仓库代理
+    # Twikoo评论系统. 见：https://twikoo.js.org/
+    twikoo:
+      version: 1.6.10 # Twikoo版本，如果您不了解其含义则请勿进行修改.
+      server_url: # Twikoo服务器URL. e.g. https://example.example.com
+      region: # Twikoo region. 可以为空.
+    # Giscus评论系统. 见：https://giscus.app/
+    giscus:
+      repo: # GitHub仓库名
+      repo_id: # GitHub仓库ID
+      category: # Github discussion分类
+      category_id: # Github discussion分类ID
+      mapping: pathname # 使用哪个值作为页面的唯一标识符. 例如：路径名、网址、标题、OG 标题. 当启用 PJAX 功能时，请勿使用 og:title，因为当页面发生变化时，PJAX 不会更新 og:title.
+      strict: 0 # 是否启用严格模式. 例如：0或1.
+      reactions_enabled: 1 # 是否启用反应功能. 例如：0或1.
+      emit_metadata: 0 # 是否要输出元数据.例如：0或1.
+      lang: en # Giscus语言. 例如：en, zh-CN, zh-TW
+      input_position: bottom # 将评论框置于评论区域的上方/下方. 例如：top, bottom
+      loading: lazy # 延迟加载评论
+
+# 页脚
+# Docs: https://redefine-docs.ohevan.com/footer
+footer:
+  # 显示网站运行时间
+  runtime: true # 是否显示网站运行时间
+  # 页脚图标，请填写Fontawesome HTML代码
+  icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
+  # 建站时间，格式: YYYY/MM/DD HH:mm:ss
+  start: 2020/10/1 13:14:52
+  # 网站统计数据
+  statistics: true # 是否显示网站统计数据（文章总数，总字数）
+  # 页脚信息
+  customize: '<div style="display: flex; justify-content: center; align-items: center; transform: translateX(20px);"><div style="max-width: 300px; width: 100%;"><iframe width="100%" scrolling="no" height="30" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?c=code&id=34&icon=1&site=14&lang=cn"></iframe></div></div>'
+  # ICP备案号. 见：https://beian.miit.gov.cn/
+  icp:
+    enable: true # 是否启用
+    number: Hexo博客网站项目地址（GitHub） # ICP 备案号
+    url: https://blog.huyongshuang.top # ICP备案url
+
+# 插入自定义代码
+# Docs: https://redefine-docs.ohevan.com/inject
+inject:
+  # 是否启用注入
+  enable: true
+  # 注入自定义头部html代码
+  head:
+#    - <link rel="stylesheet" href="/css/cursor.css">
+#    - <script src="/js/cursor.js"></script>
+  # 注入自定义页脚html代码
+  footer:
+    - '<div style="display: flex; justify-content: center; align-items: center;"><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" style="margin-right: 20px; text-decoration: none;">鄂ICP备2026000237号-2</a><a href="https://beian.mps.gov.cn/#/query/webSearch?code=42062402000234" target="_blank"style="margin-right: 5px; display: inline-flex; align-items: center; text-decoration: none;"><img src="/images/beian.png" style="height: 15px; margin-right: 5px; vertical-align: middle;" alt="备案图标"><span style="vertical-align: middle;">鄂公网安备42062402000234号</span></a></div>'
+    - '<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"style="margin-right: 5px; display: inline-flex; align-items: center; text-decoration: none;">本网站由<img src="/images/又拍云_logo2.png" style="height: 27px; margin-left: 2px; margin-right: 2px; vertical-align: middle;" alt="又拍云"><spanstyle="vertical-align: middle;">提供CDN加速服务</span></a>'
+
+# 插件
+# Docs: https://redefine-docs.ohevan.com/plugins
+plugins:
+  # RSS feed. 需要hexo-generator-feed (npm i hexo-generator-feed). 见：https://github.com/hexojs/hexo-generator-feed
+  feed:
+    enable: true # 是否启用
+    type: atom # 可选值：atom (默认) / rss2
+    path: atom.xml # 生成的订阅源文件路径，默认 atom.xml
+    limit: 0 # 显示的文章数量，0 表示显示全部
+    hub:  # 配置 WebSub 集线器
+    content: true # 是否在订阅源中包含文章全文，false 则只显示摘要
+    content_limit: 140 # 摘要字符数限制（content 为 false 时生效）
+    content_limit_delim: ' ' # 摘要截断分隔符（默认空格）
+    order_by: -date # 排序方式，-date 表示按发布时间倒序
+    icon: /images/favicon.ico # 订阅源图标路径
+    autodiscovery: true # 是否自动在页面头部添加订阅源链接（方便阅读器识别）
+    template: # 自定义 XML 模板路径（高级用法）
+
+  # Aplayer. 见：https://github.com/DIYgod/APlayer
+  aplayer:
+    enable: true # 是否启用
+    type: fixed # fixed, mini
+    audios:
+      - name: 像我这样的人 # 音乐名字
+        artist: 毛不易 # 歌手
+        url: https://music.huyongshuang.top/毛不易 - 像我这样的人.mp3 # 音乐源的url
+        cover: /music/cover/平凡的一天.jpg # 音乐的封面图片url
+        lrc: /music/lrc/毛不易 - 像我这样的人.lrc # 歌词
+      - name: 一个人想着一个人
+        artist: Lone
+        url: https://music.huyongshuang.top/Lone - 一个人想着一个人.mp3
+        cover: /music/cover/Lone.jpg
+        lrc: /music/lrc/Lone - 一个人想着一个人.lrc
+      - name: 济宁好孩子
+        artist: 张卫
+        url: https://music.huyongshuang.top/张卫 - 济宁好孩子.mp3
+        cover: /music/cover/张卫作品集.jpg
+        lrc: /music/lrc/张卫 - 济宁好孩子.lrc
+      - name: 平凡的一天
+        artist: 毛不易
+        url: https://music.huyongshuang.top/毛不易 - 平凡的一天.mp3
+        cover: /music/cover/平凡的一天.jpg
+        lrc: /music/lrc/毛不易 - 平凡的一天.lrc
+      - name: 一荤一素
+        artist: 毛不易
+        url: https://music.huyongshuang.top/毛不易 - 一荤一素.mp3
+        cover: /music/cover/平凡的一天.jpg
+        lrc: /music/lrc/毛不易 - 一荤一素.lrc
+      - name: 一程山路
+        artist: 毛不易
+        url: https://music.huyongshuang.top/毛不易 - 一程山路.mp3
+        cover: /music/cover/小王.jpg
+        lrc: /music/lrc/毛不易 - 一程山路.lrc
+      - name: 东北民谣
+        artist: 毛不易
+        url: https://music.huyongshuang.top/毛不易 - 东北民谣.mp3
+        cover: /music/cover/小王.jpg
+        lrc: /music/lrc/毛不易 - 东北民谣.lrc
+      - name: 无名的人
+        artist: 毛不易
+        url: https://music.huyongshuang.top/毛不易 - 无名的人.mp3
+        cover: /music/cover/无名的人.jpg
+        lrc: /music/lrc/毛不易 - 无名的人.lrc
+      - name: 看得最远的地方
+        artist: 毛不易
+        url: https://music.huyongshuang.top/毛不易 - 看得最远的地方.mp3
+        cover: /music/cover/月光、背影与海.jpg
+        lrc: /music/lrc/毛不易 - 看得最远的地方.lrc
+      - name: 梦与创造
+        artist: 胡永双
+        url: https://music.huyongshuang.top/胡永双 - 梦与创造.mp3
+        cover: /music/cover/根新.jpg
+        lrc: /music/lrc/胡永双 - 梦与创造.lrc
+      # .... 你可以在这里添加更多音频
+  # Mermaid JS. 需要hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). 见：https://mermaid.js.org/
+  mermaid:
+    enable: true # 是否启用mermaid
+    version: "11.4.1" # 默认 v11.4.1
+
+# 页面模版
+# Docs: https://redefine-docs.ohevan.com/page_templates
+page_templates:
+  # 友情链接页码
+  friends_column: 2
+  # 标签页面样式
+  tags_style: blur # blur, cloud
+
+# CDN加速
+# Docs: https://redefine-docs.ohevan.com/cdn
+cdn:
+  # 是否启用CDN
+  enable: false
+  # CDN提供商
+  provider: aliyun # CDN提供商：npmmirror, zstatic, cdnjs, jsdelivr, unpkg, custom
+  # 自定义CDN URL
+  # 格式示例: https://cdn.custom.com/hexo-theme-redefine/${version}/source/${path}
+  # ${path}必须指向主题的source文件夹的根目录
+  custom_url: 
+
+# 主题开发指南
+# Docs: https://redefine-docs.ohevan.com/developer
+developer:
+  # 是否启用开发人员模式（仅针对想修改主题源代码的开发人员，不针对普通用户）
+  enable: false

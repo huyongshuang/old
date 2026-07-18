@@ -1,0 +1,235 @@
+@font-face {
+	font-family: "cuboid";
+	src: url("./PFRxlurcPzZ5.woff2") format("woff2"),
+	url("./PFRxlurcPzZ5.woff") format("woff");
+	font-display: swap;
+}
+
+@media print {
+	@page {
+		size: A4;
+	}
+	.body {
+		background: #fff;
+	}
+	.left {
+		width: 100%;
+		opacity: 1;
+	}
+	.right, .a4 {
+		display: none;
+	}
+}  
+
+body {
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	padding:0;
+	background:#030;
+	overflow:hidden;
+}
+
+.container {
+	display:flex;
+	flex-direction: row;
+	width:100%;
+	height:100%;
+	justify-content:center;
+	align-items:flex-start;
+	background:
+        repeating-linear-gradient(#999, #999 1px, transparent 1px, transparent 20px),
+        repeating-linear-gradient(90deg, #999, #999 1px, transparent 1px, transparent 20px);
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 100% 100%;
+    background-position: 0 0, 0 0;
+}
+
+.left, .right {
+	box-sizing: border-box;
+}
+
+.left {
+	position: relative;
+	background: #fff;
+	opacity: 0.9;
+	overflow: hidden;
+}
+
+.a4 {
+	position: absolute;
+	top: 3px;
+	right: 5px;
+	color: #666;
+	font-size: 12px;
+	pointer-events: none;
+}
+
+.scrawlArea {
+	margin:0;
+	padding:0;
+	border:none;
+	cursor:default;
+}
+
+.right {
+	height: auto;
+	width: 360px;
+	padding:20px;
+}
+
+.inputarea {
+	background: #999;
+	padding: 20px;
+	font-size: 1.5rem;
+	border-radius: 8px;
+	border: #eee 5px solid;
+	background: #ddd;
+	background: -webkit-linear-gradient(45deg, #ddd 40%, #E8CBC0);
+	background: linear-gradient(45deg, #ddd 40%, #E8CBC0);
+	box-shadow: 1px 1px 3px #fff, -1px -1px 3px #fff
+}
+
+.inputtop {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.formulatext {
+	font-family: "cuboid";
+	height: 20px;
+	line-height: 20px;
+	padding: 15px;
+	font-size: 1.5rem;
+	color: #000;
+	text-align: right;
+	background: #cc9;
+	border: #eee 1px solid;
+	border-radius: 6px;
+	position: relative;
+	pointer-events: none
+}
+
+.formulatext::before {
+	display: inline-block;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	/* content: '🕪\1F56A';🕨\1F568 */
+	content: attr(data-audio);
+	font-size: 1.0rem;
+	transform: scaleX(-1);
+	cursor: pointer;
+	pointer-events: auto;
+}
+
+.formulatext::after {
+	content: '';
+	padding-left: 2px;
+	border-right: #666 2px solid;
+	animation: blink 0.6s infinite alternate;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.infotip {
+	position: absolute;
+	top: 80px;
+	left: 5px;
+	font-size: 0.6rem;
+	color: #33f;
+}
+
+h1 {
+	height: 30px;
+	overflow: hidden;
+	font-size: 1.6rem;
+	text-align: center;
+	color: #333;
+	font-weight: normal;
+}
+
+#currentTime {
+	color: #666;
+	text-align: right;
+	padding: 0;
+	margin: 0;
+	font-size: 0.5rem;
+}
+
+.button-group-row {
+	overflow: hidden;
+	margin: 10px auto;
+	padding: 0;
+	text-align: center;
+}
+
+.button-group-row button {
+	text-align: center;
+	border-radius: 8px;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.button-group-row button:hover {
+	background: #f60;
+}
+
+.button-group-row button sub {
+	margin-left: 5px;
+	font-size: 0.6rem;
+	opacity: 0.6;
+}
+
+.button-group-row button[disabled] {
+	color: #fff;
+	background: #666;
+	cursor: not-allowed;
+}
+
+.s_button {
+	font-family: "cuboid";
+	width: 2.8rem;
+	height: 2.7rem;
+	font-size: 1.5rem;
+	background: #333;
+}
+
+.l_button {
+	width: 8rem;
+	height: 3rem;
+	font-size: 1rem;
+	background: #09f;
+}
+
+.explain {
+	margin-top: 20px;
+	font-size: 1.0rem;
+	line-height: 180%;
+	color: #fff;
+	background: #666;
+	border: #ddd 3px solid;
+	border-radius: 6px;
+	padding: 10px;
+	box-shadow: 1px 1px 3px #fff, -1px -1px 3px #fff
+}
+
+.copy {
+	margin-top: 10px;
+	margin-right: 10px;
+	text-align: right;
+}
+
+.copy, .copy a {
+	color: #fff;
+	font-size: 0.8rem;
+	text-decoration: none;
+}

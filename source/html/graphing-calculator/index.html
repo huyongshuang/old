@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图形计算器</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/mathjs@11.6.0/lib/browser/math.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="header">
+            图形计算器
+        </div>
+        
+        <div class="content">
+            <div class="graph-section">
+                <canvas id="graphCanvas"></canvas>
+            </div>
+            
+            <div class="input-section">
+                <input type="text" id="expressionInput" class="expression-input" placeholder="请输入函数表达式或曲线方程" autocomplete="off">
+            </div>
+            
+            <div class="buttons-section">
+                <div class="button-group">
+                    <div class="button-group-title">基本运算</div>
+                    <div class="button-grid">
+                        <button class="calc-button operation" data-value="+">+</button>
+                        <button class="calc-button operation" data-value="-">-</button>
+                        <button class="calc-button operation" data-value="*">×</button>
+                        <button class="calc-button operation" data-value="/">÷</button>
+                        <button class="calc-button" id="backspaceBtn"><i class="fas fa-backspace"></i></button>
+                        <button class="calc-button clear" id="clearBtn">清空</button>
+                        
+                        <button class="calc-button" data-value="7">7</button>
+                        <button class="calc-button" data-value="8">8</button>
+                        <button class="calc-button" data-value="9">9</button>
+                        <button class="calc-button" data-value="x">x</button>
+                        <button class="calc-button" data-value="y">y</button>
+                        <button class="calc-button" data-value="pi">π</button>
+                        
+                        <button class="calc-button" data-value="4">4</button>
+                        <button class="calc-button" data-value="5">5</button>
+                        <button class="calc-button" data-value="6">6</button>
+                        <button class="calc-button" data-value="(">(</button>
+                        <button class="calc-button" data-value=")">)</button>
+                        <button class="calc-button" data-value="e">e</button>
+                        
+                        <button class="calc-button" data-value="1">1</button>
+                        <button class="calc-button" data-value="2">2</button>
+                        <button class="calc-button" data-value="3">3</button>
+                        <button class="calc-button" data-value=".">.</button>
+                        <button class="calc-button" data-value="0">0</button>
+                        <button class="calc-button operation" data-value="=">=</button>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <div class="button-group-title">函数</div>
+                    <div class="button-grid">
+                        <button class="calc-button function" data-value="sqrt(">√</button>
+                        <button class="calc-button function" data-value="^">^</button>
+                        <button class="calc-button function" data-value="abs(">|x|</button>
+                        <button class="calc-button function" data-value="exp(">exp</button>
+                        <button class="calc-button function" data-value="log(">log</button>
+                        <button class="calc-button function" data-value="ln(">ln</button>
+                        
+                        <button class="calc-button function" data-value="derivative(">d/dx</button>
+                        <button class="calc-button function" data-value="integrate(">∫dx</button>
+                        <button class="calc-button function" data-value=",">,</button>
+                        <button class="calc-button function" data-value="sin(">sin</button>
+                        <button class="calc-button function" data-value="cos(">cos</button>
+                        <button class="calc-button function" data-value="tan(">tan</button>
+                        
+                        <button class="calc-button function" data-value="sec(">sec</button>
+                        <button class="calc-button function" data-value="csc(">csc</button>
+                        <button class="calc-button function" data-value="cot(">cot</button>
+                        <button class="calc-button function" data-value="asin(">arcsin</button>
+                        <button class="calc-button function" data-value="acos(">arccos</button>
+                        <button class="calc-button function" data-value="atan(">arctan</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status" id="statusMessage">
+                输入表达式后，图像将实时显示
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

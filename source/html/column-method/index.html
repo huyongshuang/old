@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竖式计算器</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <main class="container">
+        <div id="canvasArea" class="left">
+            <canvas id="scrawlArea" class="scrawlArea" width="529" height="749">你的浏览器不支持HTML5的部分特性，影响本程序正常使用。</canvas>
+            <div class="a4">参考纸张大小：A4</div>
+        </div>
+        <div id="rightArea" class="right">
+            <div class="inputarea" id="inputarea">
+                <div class="inputtop">
+                    <h2>竖式计算器</h2>
+                    <div class="formulatext" id="math_formula" data-audio="🕪"></div>
+                    <div class="infotip" id="infotip"></div>
+                </div>
+                <div class="button-group-row">
+                    <button type="button" class="s_button" id="numb_1" onclick="formula(&#39;1&#39;,this);">1</button>
+                    <button type="button" class="s_button" id="numb_2" onclick="formula(&#39;2&#39;,this);">2</button>
+                    <button type="button" class="s_button" id="numb_3" onclick="formula(&#39;3&#39;,this);">3</button>
+                    <button type="button" class="s_button" id="numb_4" onclick="formula(&#39;4&#39;,this);">4</button>
+                    <button type="button" class="s_button" id="numb_5" onclick="formula(&#39;5&#39;,this);">5</button>
+                </div>
+                <div class="button-group-row">
+                    <button type="button" class="s_button" id="numb_6" onclick="formula(&#39;6&#39;,this);">6</button>
+                    <button type="button" class="s_button" id="numb_7" onclick="formula(&#39;7&#39;,this);">7</button>
+                    <button type="button" class="s_button" id="numb_8" onclick="formula(&#39;8&#39;,this);">8</button>
+                    <button type="button" class="s_button" id="numb_9" onclick="formula(&#39;9&#39;,this);">9</button>
+                    <button type="button" class="s_button" id="numb_0" onclick="formula(&#39;0&#39;,this);">0</button>
+                </div>
+                <div class="button-group-row">
+                    <button type="button" class="s_button" id="numb_dot" onclick="formula(&#39;.&#39;,this);" disabled="disabled">.</button>
+                    <button type="button" class="s_button" id="numb_add" onclick="formula(&#39;+&#39;,this);" disabled="disabled">+</button>
+                    <button type="button" class="s_button" id="numb_sub" onclick="formula(&#39;-&#39;,this);" disabled="disabled">-</button>
+                    <button type="button" class="s_button" id="numb_mul" onclick="formula(&#39;×&#39;,this);" disabled="disabled">×</button>
+                    <button type="button" class="s_button" id="numb_div" onclick="formula(&#39;÷&#39;,this);" disabled="disabled">÷</button>
+                </div>
+                <div class="button-group-row">
+                    <button type="button" class="l_button" id="numb_back" onclick="backspace();">退格<sub>←</sub></button>
+                    <button type="button" class="l_button" id="numb_clear" onclick="clearAll();">清空<sub>Space</sub></button>
+                </div>
+                <div class="button-group-row">
+                    <button type="button" class="l_button" id="createVertical" disabled="disabled">生成竖式<sub>Enter</sub></button>
+                    <button type="button" class="l_button" id="createVertical_" disabled="disabled">生成空白竖式<sub>=</sub></button>
+                </div>
+                <div class="button-group-row">
+                    <button type="button" class="l_button" onclick="print();">打印<sub>Ctrl+P</sub></button>
+                    <button type="button" class="l_button" onclick="download();">下载</button>
+                </div>
+            </div>
+            <div class="explain">
+                <strong>竖式计算器：</strong>加法竖式、减法竖式、乘法竖式、除法竖式（可显示余数）的计算。
+            </div>
+            <div class="copy">
+                © <a href="https://huyongshuang.github.io">胡永双</a>
+            </div>
+        </div>
+    </main>
+    <script src="./js/cookie.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

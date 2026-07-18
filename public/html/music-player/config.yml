@@ -1,0 +1,142 @@
+songs:
+  - id: 1
+    title: 一个人想着一个人
+    artist: Lone
+    src: https://music.huyongshuang.top/Lone - 一个人想着一个人.mp3
+    cover: /music/cover/Lone.jpg
+    smallCover: /music/cover/Lone.jpg
+    lrcFile: /music/lrc/Lone - 一个人想着一个人.lrc
+  - id: 2
+    title: 像我这样的人
+    artist: 毛不易
+    src: https://music.huyongshuang.top/毛不易 - 像我这样的人.mp3
+    cover: /music/cover/平凡的一天.jpg
+    smallCover: /music/cover/平凡的一天.jpg
+    lrcFile: /music/lrc/毛不易 - 像我这样的人.lrc
+  - id: 3
+    title: 济宁好孩子
+    artist: 张卫
+    src: https://music.huyongshuang.top/张卫 - 济宁好孩子.mp3
+    cover: /music/cover/张卫作品集.jpg
+    smallCover: /music/cover/张卫作品集.jpg
+    lrcFile: /music/lrc/张卫 - 济宁好孩子.lrc
+  - id: 4
+    title: 一荤一素
+    artist: 毛不易
+    src: https://music.huyongshuang.top/毛不易 - 一荤一素.mp3
+    cover: /music/cover/平凡的一天.jpg
+    smallCover: /music/cover/平凡的一天.jpg
+    lrcFile: /music/lrc/毛不易 - 一荤一素.lrc
+  - id: 5
+    title: 平凡的一天
+    artist: 毛不易
+    src: https://music.huyongshuang.top/毛不易 - 平凡的一天.mp3
+    cover: /music/cover/平凡的一天.jpg
+    smallCover: /music/cover/平凡的一天.jpg
+    lrcFile: /music/lrc/毛不易 - 平凡的一天.lrc
+  - id: 6
+    title: 一程山路
+    artist: 毛不易
+    src: https://music.huyongshuang.top/毛不易 - 一程山路.mp3
+    cover: /music/cover/小王.jpg
+    smallCover: /music/cover/小王.jpg
+    lrcFile: /music/lrc/毛不易 - 一程山路.lrc
+  - id: 7
+    title: 东北民谣
+    artist: 毛不易
+    src: https://music.huyongshuang.top/毛不易 - 东北民谣.mp3
+    cover: /music/cover/小王.jpg
+    smallCover: /music/cover/小王.jpg
+    lrcFile: /music/lrc/毛不易 - 东北民谣.lrc
+  - id: 8
+    title: 无名的人
+    artist: 毛不易
+    src: https://music.huyongshuang.top/毛不易 - 无名的人.mp3
+    cover: /music/cover/无名的人.jpg
+    smallCover: /music/cover/无名的人.jpg
+    lrcFile: /music/lrc/毛不易 - 无名的人.lrc
+  - id: 9
+    title: 看得最远的地方
+    artist: 毛不易
+    src: https://music.huyongshuang.top/毛不易 - 看得最远的地方.mp3
+    cover: /music/cover/月光、背影与海.jpg
+    smallCover: /music/cover/月光、背影与海.jpg
+    lrcFile: /music/lrc/毛不易 - 看得最远的地方.lrc
+  - id: 10
+    title: 梦与创造
+    artist: 胡永双
+    src: https://music.huyongshuang.top/胡永双 - 梦与创造.mp3
+    cover: /music/cover/根新.jpg
+    smallCover: /music/cover/根新.jpg
+    lrcFile: /music/lrc/胡永双 - 梦与创造.lrc
+
+  - id: 11
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 12
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 13
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 14
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 15
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 16
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 17
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 18
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 19
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:
+  - id: 20
+    title:
+    artist:
+    src:
+    cover:
+    smallCover:
+    lrcFile:

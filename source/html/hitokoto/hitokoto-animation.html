@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一言·打字动画</title>
+    <style>
+        body {
+            font-family: SimSun;
+            text-align: center;
+            padding: 50px 20px;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        #hitokoto {
+            font-size: 24px;
+            line-height: 1.8;
+            margin: 30px 0;
+            color: #333;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tip {
+            font-size: 14px;
+            color: #999;
+            margin-top: 20px;
+        }
+        /* 打字光标动画 */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 28px;
+            background-color: #333;
+            margin-left: 4px;
+            animation: blink 0.7s infinite alternate;
+        }
+        /* 光标闪烁动画 */
+        @keyframes blink {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="hitokoto">
+            <span id="text-content"></span>
+            <span class="cursor"></span>
+        </div>
+    </div>
+
+    <script>
+        // ********** 动画配置 **********
+        const TYPE_SPEED = 80;    // 打字速度(ms/字)，越小越快
+        const DELETE_SPEED = 50;  // 删除速度(ms/字)，越小越快
+        const TYPE_PAUSE = 2000;  // 打字完成后停顿时间(ms)
+        const DELETE_PAUSE = 500; // 删除完成后停顿时间(ms)
+        // ********** 全局变量 **********
+        const textContent = document.getElementById('text-content');
+        let currentSentence = ''; // 当前动画句子
+        let index = 0;            // 打字/删除索引
+        let isDeleting = false;   // 是否删除状态
+        let isFirst = true;       // 标记是否是第一句，核心防重复
+
+        async function getHitokoto() {
+            try {
+                const response = await fetch('https://v1.hitokoto.cn/?c=k&c=i&c=h&c=d&c=c&t=' + Date.now());
+                if (!response.ok) throw new Error('接口响应异常');
+                const data = await response.json();
+                let sentence = data.hitokoto;
+                if (data.from_who || data.from) {
+                    sentence += " —— ";
+                    if (data.from_who) sentence += data.from_who;
+                    if (data.from) sentence += "《" + data.from + "》";
+                }
+                return sentence;
+            } catch (error) {
+                console.error('获取一言失败：', error);
+                return '获取语录失败，换一句试试吧～';
+            }
+        }
+
+        async function typeDeleteAnimation() {
+            if (index === 0 && !isDeleting) {
+                currentSentence = await getHitokoto();
+            }
+            if (isDeleting) {
+                textContent.textContent = currentSentence.substring(0, index - 1);
+                index--;
+                if (index === 0) {
+                    isDeleting = false;
+                    if (isFirst) isFirst = false;
+                    setTimeout(typeDeleteAnimation, DELETE_PAUSE);
+                    return;
+                }
+                setTimeout(typeDeleteAnimation, DELETE_SPEED);
+            } else {
+                textContent.textContent = currentSentence.substring(0, index + 1);
+                index++;
+                if (index === currentSentence.length) {
+                    isDeleting = true;
+                    setTimeout(typeDeleteAnimation, TYPE_PAUSE);
+                    return;
+                }
+                setTimeout(typeDeleteAnimation, TYPE_SPEED);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            typeDeleteAnimation();
+        });
+    </script>
+</body>
+</html>

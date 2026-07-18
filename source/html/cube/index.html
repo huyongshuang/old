@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>胡永双: 3D魔方游戏</title>
+    <meta name="description" content="胡永双: 3D魔方游戏">
+    <meta name="keywords" content="魔方,cube,html,胡永双">
+    <link rel="canonical" href="https://huyongshuang.github.io/html/cube/">
+    <link rel="icon" href="https://huyongshuang.github.io/images/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="192x192" href="https://huyongshuang.github.io/images/avatar.png">
+    <link rel="stylesheet" href="./css/style.css" data-precedence="next">
+    <script src="./js/Cube.js" async=""></script>
+    <script src="./js/Fiber.js" async=""></script>
+    <script src="./js/React-Three.js" async=""></script>
+    <script src="./js/Three.js" async=""></script>
+    <script src="./js/webpack-1.js" async=""></script>
+    <script src="./js/webpack-2.js" async=""></script>
+    <script src="./js/webpack-3.js" async=""></script>
+    <script src="./js/webpack-4.js" async=""></script>
+</head>
+
+<body>
+    <div class="flex flex-col min-h-screen">
+        <main class="flex-grow container mx-auto mt-6 px-2 sm:px-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full mb-6">
+                <h1 class="text-2xl font-bold">‎</h1>
+            </div>
+            <div class="w-full flex flex-col lg:flex-row">
+                <div class="h-[70vh] lg:w-4/5 relative flex items-center justify-center">
+                    <div class="w-full lg:w-4/5 h-full relative bg-gradient-to-br rounded-lg shadow-inner border border-gray-400 bg-gray-200">
+                        <div style="position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: auto; top: 0px; left: 0px; touch-action: none;">
+                            <div style="width:100%;height:100%">
+                                <canvas style="display: block; width: 797.571px; height: 523.25px; touch-action: auto;" data-engine="three.js r169" width="1395" height="915"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/5 p-4 overflow-y-auto">
+                    <div class="flex flex-col gap-4">
+                        <button class="w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-400">随机打乱魔方</button>
+                        <button class="w-full py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:bg-gray-400">重置魔方</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./js/webpack-5.js" async=""></script>
+    <script>
+        (self.__next_f = self.__next_f || []).push([0])
+    </script>
+    <script>
+        self.__next_f.push([1, "1:\"$Sreact.fragment\"\n2:I[79455,[],\"\"]\n3:I[58307,[],\"\"]\n6:I[5277,[],\"MetadataBoundary\"]\n8:I[5277,[],\"OutletBoundary\"]\nb:I[71467,[],\"AsyncMetadataOutlet\"]\nd:I[5277,[],\"ViewportBoundary\"]\nf:I[8762,[],\"\"]\n:HL[]\n"])</script><script>self.__next_f.push([1, "0:{\"P\":null,\"b\":\"\",\"p\":\"\",\"c\":[],\"i\":false,\"f\":[[[\"\",{\"children\":[[\"\",\"\",\"\"],{\"children\":[\"\",{\"children\":[\"\",{\"children\":[\"\",{}]}]}]},\"$undefined\",\"$undefined\",true]}],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"\",\"\",\"\"],[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"link\",\"1\",{\"rel\":\"stylesheet\",\"href\":\"\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[\"games\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"cube\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L5\",[\"$\",\"$L6\",null,{\"children\":\"$L7\"}],null,[\"$\",\"$L8\",null,{\"children\":[\"$L9\",\"$La\",[\"$\",\"$Lb\",null,{\"promise\":\"$@c\"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"\",{\"children\":[[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}],null]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$f\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1, "10:\"$Sreact.suspense\"\n11:I[71467,[],\"AsyncMetadata\"]\n14:I[10485,[],\"default\"]\n16:I[71328,[],\"default\"]\n7:[\"$\",\"$10\",null,{\"fallback\":null,\"children\":[\"$\",\"$L11\",null,{\"promise\":\"$@12\"}]}]\n5:[\"$L13\",[\"$\",\"$L14\",null,{\"\":\"\"}],\"$L15\",[\"$\",\"$L16\",null,{\"\":\"\"}]]\n"])</script><script>self.__next_f.push([1, "a:null\n"])</script><script>self.__next_f.push([1, "17:I[51399,[],\"\"]\n19:I[89011,[],\"I18nProvider\"]\n1a:I[31326,[],\"SpeedInsights\"]\n1b:I[49311,[],\"GoogleAnalytics\"]\n1c:I[99302,[],\"\"]\n1d:I[58748,[],\"default\"]\n"])</script><script>self.__next_f.push([1, "4:[\"$\",\"html\",null,{\"lang\": \"zh\",\"children\": [[\"$\",\"head\",null,{\"children\": [[\"$\",\"link\",null,{\"rel\": \"icon\",\"href\": \"https://huyongshuang.github.io/images/favicon.ico\",\"sizes\": \"any\"}],[\"$\",\"link\",null,{\"rel\": \"apple-touch-icon\",\"sizes\": \"192x192\",\"href\": \"https://huyongshuang.github.io/images/avatar.png\"}]]}],[\"$\",\"body\",null,{\"children\": [[\"$\",\"div\",null,{\"className\": \"flexflex-colmin-h-screen\",\"children\": [[\"$\",\"$L19\",null,{\"initialDictionary\": {\"cube_title\": \"胡永双\",\"reset\": \"重置魔方\",\"scramble\": \"随机打乱魔方\"},\"children\": [\"$\",\"main\",null,{\"className\": \"flex-growcontainermx-automt-6px-2sm: px-4\",\"children\": [\"\",[\"$\",\"$L2\",null,{\"parallelRouterKey\": \"children\",\"error\": \"$undefined\",\"errorStyles\": \"$undefined\",\"errorScripts\": \"$undefined\",\"template\": [\"$\",\"$L3\",null,{}],\"templateStyles\": \"$undefined\",\"templateScripts\": \"$undefined\",\"notFound\": \"$undefined\",\"forbidden\": \"$undefined\",\"unauthorized\": \"$undefined\"}],\"\"]}]}]]}]]}]]}]\n"])</script><script>self.__next_f.push([1, "13:[\"$\",\"div\",null,{\"className\": \"flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full mb-6\",\"children\": [[\"$\",\"div\",null,{\"className\": \"text-2xl font-bold\",\"children\": \"‎\"}]]}]\n"])</script><script>self.__next_f.push([1, "1e:I[33610,[],\"default\"]\n1f:I[17833,[],\"default\"]\n21:I[76198,[],\"default\"]\n20:"])</script><script>self.__next_f.push([1, "18:[[\"$\",\"ul\",null,{\"className\":\"\",\"children\":[]}],[\"$\",\"div\",null,{\"className\":\"\",\"children\":[]}]]\n"])</script><script>self.__next_f.push([1, "e:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n9:null\n"])</script><script>self.__next_f.push([1,"12:{\"metadata\":[[\"$\",\"title\",\"0\",{\"children\":\"胡永双: 3D魔方游戏\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"胡永双: 3D魔方游戏\"}],[\"$\",\"meta\",\"2\",{\"name\":\"keywords\",\"content\":\"魔方,cube,html,胡永双\"}],[\"$\",\"link\",\"3\",{\"rel\":\"canonical\",\"href\":\"https://huyongshuang.github.io/html/cube\"}]],\"error\":null,\"digest\":\"$undefined\"}\nc:{\"metadata\":\"$12:metadata\",\"error\":null,\"digest\":\"$undefined\"}\n"])</script><script>self.__next_f.push([1, "15:[\"$\",\"div\",null,{\"className\":\"mt-16\",\"children\":[]}]\n"])
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# 网站
+title: 胡永双 # 网站标题
+subtitle: '' # 网站副标题
+description: '' # 网站描述
+keywords:  # 网站的关键词
+author: huyongshuang # 作者名字
+language: zh-CN # 网站使用的语言
+timezone: '' # 网站时区，国内建议选择Asia/Shanghai
+
+# 网址
+## 在此处设置你的网站网址. 例如，如果你使用GitHub Page，请将网址设置为"https://username.github.io/project"
+url: https://huyongshuang.github.io # 网站地址
+permalink: :year/:i_month/:i_day-:title/ # 文章的永久链接格式
+permalink_defaults:  # 永久链接中各部分的默认值
+pretty_urls:  # 改写permalink的值来美化URL
+  trailing_index: false # 是否在永久链接中保留尾部的index.html，设置为false时去除
+  trailing_html: false # 是否在永久链接中保留尾部的.html，设置为false时去除，对尾部的index.html无效
+
+# 目录
+source_dir: source # Source文件夹存储内容的位置
+public_dir: public # Public文件夹生成静态站点的位置
+tag_dir: tags # 标签文件夹
+archive_dir: archives # 归档文件夹
+category_dir: categories # 分类文件夹
+code_dir: downloads/code # Include code文件夹，source_dir下的子目录
+i18n_dir: :lang # 国际化（i18n）文件夹
+skip_render:  # 跳过渲染
+  - "huyongshuang/**"
+  - "message/**"
+  - "_posts/Hexo-2/config.yml"
+  - "_posts/Hexo-3/*.yml"
+  - "_posts/copy-yaml/**"
+  - "_posts/color-picker/**"
+  - "_posts/deploy-script/**"
+  - "_posts/color-text/**"
+  - "html/cloudmusic-download/**"
+  - "html/color-picker/**"
+  - "html/column-method/**"
+  - "html/cube/**"
+  - "html/cuber/**"
+  - "html/graphing-calculator/**"
+  - "html/heart-shaped-function/**"
+  - "html/hitokoto/**"
+  - "html/huyongshuang/**"
+  - "html/music-player/**"
+  - "html/pixel-font-generator/**"
+  - "html/rubiks-cube/**"
+
+# 文章
+new_post_name: :title.md # 新文章的文件名称
+default_layout: post # 预设布局
+titlecase: false # 把标题转换为title case
+external_link:
+  enable: true # 在新标签中打开链接
+  field: site # 对整个网站（site）生效或仅对文章（post）生效
+  exclude: '' # 需要排除的域名
+filename_case: 0 # 值为1，文件名转换为小写形式；值为2，文件名转换为大写形式
+render_drafts: false # 显示草稿
+post_asset_folder: true # 启用资源文件夹（已启用）
+relative_link: false # 把链接改为与根目录的相对位址
+future: true # 显示未来的文章
+syntax_highlighter: highlight.js # 语法高亮工具
+highlight:
+  line_number: true # 代码的行号显示
+  auto_detect: false # 自动检测代码语言
+  tab_replace: '' # 将代码中的Tab符替换为空字符串
+  wrap: true # 开启代码的包裹容器
+  hljs: false # 禁用highlight.js自带的hljs-*类名
+prismjs:
+  preprocess: true # 代码的预处理
+  line_number: true # 代码的行号显示
+  tab_replace: '' # 将代码中的Tab符替换为空字符串
+
+# 首页设置
+index_generator: # 生成帖子归档
+  path: '' # 博客索引页面的根路径，默认为空
+  per_page: 10 # 每页显示帖子数，设置为0禁用分页
+  order_by: -date # 帖子排列顺序，默认按日期降序排列
+
+# 分类 & 标签
+default_category: uncategorized # 默认分类
+category_map:  # 分类别名
+tag_map:  # 标签别名
+
+# Meta generator标签
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true # 是否开启生成<meta name="generator" ...>标签
+
+# 日期 / 时间格式
+## Hexo使用Moment.js来解析和显示日期
+## 你可以按照所定义的格式来自定义日期格式
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD # 日期格式
+time_format: HH:mm:ss # 时间格式
+updated_option: 'mtime' # 当Front-Matter中没有指定updated时updated的取值，支持"mtime"，"date"，"empty"
+
+# 分页
+## 将"per_page"设置为0以禁用分页功能
+per_page: 10 # 每页显示的帖子数
+pagination_dir: page # URL格式
+
+# 包括或不包括目录和文件
+## include:/exclude:选项仅适用于"source/"文件夹
+include:  # 包含隐藏文件
+exclude:  # 排除文件或文件夹
+ignore:  # 忽略文件/文件夹
+
+# 扩展
+## 插件: https://hexo.io/plugins/
+## 主题: https://hexo.io/themes/
+theme: redefine # 当前主题名称
+
+# 部署
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  - type: git
+    repo: https://github.com/huyongshuang/old.git
+    branch: page
+#  - type: git
+#    repo: root@139.155.173.10:/blog/hexo.git
+#    branch: main
+
+# Mathjax数学公式
+mathjax:
+  tags: none # 自动编号规则，'none': 不会自动生成编号，'ams': 仅对符合AMS-LaTeX规范的公式编号，'all': 对所有块级公式都自动编号
+  single_dollars: true # 是否启用单行美元符号作为行内公式的分隔符
+  cjk_width: 0.9 # 中日韩（CJK）字符相对于公式的宽度比例
+  normal_width: 0.6 # 普通等宽字符相对于公式的宽度比例
+  append_css: true # 是否自动给每一页添加 MathJax 所需的 CSS 样式
+  every_page: false # 是否强制所有页面都渲染 MathJax（忽略文章的 Front-matter 配置）

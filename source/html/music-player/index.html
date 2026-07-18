@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="icon" href="https://huyongshuang.github.io/images/avatar.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <div class="main-content">
+            <div class="music-list-container" id="musicListContainer">
+                <button class="music-list-close-btn" id="musicListCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2><i class="fas fa-music"></i> 音乐列表</h2>
+                <div class="music-list" id="musicList"></div>
+            </div>
+            
+            <div class="right-content">
+                <div class="album-section">
+                    <div class="album-cover-container">
+                        <img src="" alt="专辑封面" class="album-cover" id="albumCover">
+                    </div>
+                    <div class="album-info">
+                        <h1 class="now-playing-title" id="nowPlayingTitle">选择一首歌曲</h1>
+                        <p class="now-playing-artist" id="nowPlayingArtist">-</p>
+                        <p class="album-status" id="albumStatus">点击播放按钮开始播放</p>
+                    </div>
+                </div>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-container" id="lyricsContainer">
+                        <div class="lyrics-wrapper" id="lyricsWrapper"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="player-controls">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <div class="progress-time">
+                    <span id="currentTime">0:00</span>
+                    <span id="totalTime">0:00</span>
+                </div>
+            </div>
+            
+            <div class="controls-main">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-list"></i>
+                </button>
+                
+                <div class="time-display">
+                    <span id="currentTimeDisplay">0:00</span> / <span id="totalTimeDisplay">0:00</span>
+                </div>
+                
+                <div class="playback-controls">
+                    <button class="control-btn" id="prevBtn">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn play-pause-btn" id="playPauseBtn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn" id="nextBtn">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                
+                <div class="right-controls">
+                    <div class="volume-container">
+                        <i class="fas fa-volume-up"></i>
+                        <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider">
+                    </div>
+                    <button class="loop-btn" id="loopBtn" title="循环播放">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button class="speed-btn" id="speedBtn" title="播放速度">
+                        <span>1.0x</span>
+                    </button>
+                    <button class="theme-btn" id="themeBtn" title="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="speed-selector" id="speedSelector">
+                        <div class="speed-option" data-speed="0.5">0.5x</div>
+                        <div class="speed-option" data-speed="0.75">0.75x</div>
+                        <div class="speed-option active" data-speed="1.0">1.0x</div>
+                        <div class="speed-option" data-speed="1.25">1.25x</div>
+                        <div class="speed-option" data-speed="1.5">1.5x</div>
+                        <div class="speed-option" data-speed="2.0">2.0x</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>
